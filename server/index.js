@@ -1,0 +1,21 @@
+const express = require('express');
+require("dotenv").config();
+const router = require('./router');
+const cors = require('cors');
+
+const db = require('./models/index');
+
+const app = express();
+const port = process.env.EXPRESS_PORT || 3001;
+
+app.use(cors());
+app.use(express.json());
+
+app.use('/',  router);
+
+(async function bootstrap () {
+  await db.sequelize.sync();
+  app.listen(port, () => {
+    console.log(`Listening to server http://localhost:${port}`);
+  });
+})();
