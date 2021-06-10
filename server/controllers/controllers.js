@@ -69,15 +69,44 @@ const createReview = async (req, res) => {
   }
 }
 
-// const getSchoolReviews = async (req, res) => {
-//   try {
-    
-//     const revies = await db.School
+const getSchoolReviews = async (req, res) => {
+  try {
+    const { SchoolId } = req.params;
+    const reviews = await db.Review.findAll({ where: { SchoolId } });
+    res.json(reviews).status(200);
+  } catch (error) {
+    console.log(error);
+    res.status(500);
+  }
+}
 
-//   } catch (error) {
+const deleteReview = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await db.Review.destroy({where: { id } });
+    res.sendStatus(204);
+  } catch (error) {
+    console.log(error);
+    res.status(500);
+  }
+}
 
-//   }
-// }
+const updateReview = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { facility, staff, services, comment, UserId, SchoolId } = req.body;
+    if (comment) {
+      const updatedReview = await db.Review.update({ facility, staff, services, comment, UserId, SchoolId }, { where: { id } });
+      res.json(updatedReview).status(200);
+    } else {
+      const updatedReview = await db.Review.update({ facility, staff, services, UserId, SchoolId, comment: null }, { where: { id } });
+      res.json(updatedReview).status(200);
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500);
+  }
+}
 
 module.exports = {
   getAllReviews,
@@ -86,5 +115,7 @@ module.exports = {
   createUser,
   createSchool,
   createReview,
-  // getSchoolReviews
+  getSchoolReviews,
+  deleteReview,
+  updateReview
 }
