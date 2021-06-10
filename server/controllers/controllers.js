@@ -1,5 +1,6 @@
 const db = require('../models/index');
 
+// DELETE WHEN FRONTEND IS FIXED
 const getAllUsers = async (req, res) => {
   try {
     const users = await db.User.findAll();
@@ -10,6 +11,7 @@ const getAllUsers = async (req, res) => {
   }
 }
 
+// DELETE WHEN FRONTEND IS FIXED
 const getAllReviews = async (req, res) => {
   try {
     const reviews = await db.Review.findAll();
@@ -109,8 +111,8 @@ const updateReview = async (req, res) => {
 }
 
 module.exports = {
-  getAllReviews,
-  getAllUsers,
+  getAllReviews,// DELETE WHEN FRONTEND IS FIXED
+  getAllUsers,// DELETE WHEN FRONTEND IS FIXED
   getAllSchools,
   createUser,
   createSchool,
