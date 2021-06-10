@@ -4,8 +4,6 @@ const ListedSchool = ({school}) => {
 
   const { name, address } = school;
 
-
-
   return (
     <li>
       <div> {name} </div>

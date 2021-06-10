@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router  } from 'react-router-dom';
 import { getSchools } from './services/apiService';
 // import auth from './utils/auth';
 import Navbar from './components/navbarComponent/Navbar';
-import SchoolList from './components/schoolsListComponent/SchoolList';
+import Dashboard from './components/dashboardComponent/Dashboard';
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       <Router>
         <Navbar />
-        {schools.length > 0 ?  <SchoolList schools={schools} /> : <h2>No events</h2> }
+        <Dashboard schools={schools}/>
       </Router>
     </div>
   );
