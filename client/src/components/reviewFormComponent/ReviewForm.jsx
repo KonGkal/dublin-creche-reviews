@@ -5,7 +5,8 @@ import "./ReviewForm.css";
 
 const ReviewForm = () => {
   const [userDetails, setUserDetails] = useState([]);
-  const { getAccessTokenSilently } = useAuth0();
+  const { user, getAccessTokenSilently } = useAuth0();
+  const { email } = user;
 
   const getAllUsers = async () => {
     try {
@@ -21,9 +22,6 @@ const ReviewForm = () => {
       console.log(e);
     }
   };
-
-  const { user } = useAuth0();
-  const { email } = user;
 
   const isExistingUser = (userEmail) => {
     getAllUsers().then((res) => {

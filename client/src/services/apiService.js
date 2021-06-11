@@ -1,7 +1,4 @@
-// import { useAuth0 } from "@auth0/auth0-react";
 const baseUrl = process.env.REACT_APP_SERVER_URL;
-
-// const { getAccessTokenSilently } = useAuth0;
 
 export const getSchools = async () => {
   try {
@@ -11,21 +8,6 @@ export const getSchools = async () => {
     console.log(e);
   }
 };
-
-// export const getAllUsers = async () => {
-//   try {
-//     const token = await getAccessTokenSilently();
-
-//     const res = await fetch(`${baseUrl}/users`, {
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//       },
-//     });
-//     return res.json();
-//   } catch (e) {
-//     console.log(e);
-//   }
-// };
 
 export const addNewUser = async (email) => {
   try {
@@ -56,10 +38,3 @@ export const findUserbyEmail = async (email) => {
     console.log(e);
   }
 };
-
-// module.exports = {
-//   getSchools,
-//   getAllUsers,
-//   addNewUser,
-//   findUserbyEmail,
-// };
