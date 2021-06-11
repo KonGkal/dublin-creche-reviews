@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllUsers, addNewUser } from "../../services/apiService";
+import {
+  getAllUsers,
+  addNewUser,
+  findUserbyEmail,
+} from "../../services/apiService";
 import "./ReviewForm.css";
 
 const ReviewForm = () => {
@@ -14,59 +18,95 @@ const ReviewForm = () => {
     });
   };
 
-  useEffect(() => isExistingUser(email));
+  const [userDetails, setUserDetails] = useState([]);
 
-  const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
-  const [venue, setVenue] = useState("");
+  useEffect(() => {
+    isExistingUser(email);
+    findUserbyEmail(email).then((user) => {
+      setUserDetails(user);
+    });
+  }, []);
+
+  console.log(userDetails);
+
+  const [facility, setFacility] = useState("");
+  const [staff, setStaff] = useState("");
+  const [services, setServices] = useState("");
+  const [comment, setComment] = useState("");
 
   const submitHandler = (event) => {
     event.preventDefault();
 
-    // createEvent(title, formatedDate, venue )
+    // createReview(facility, staff, services, comment = "No Comment" )
 
-    setTitle("");
-    setDate("");
-    setVenue("");
+    setFacility("");
+    setStaff("");
+    setServices("");
+    setComment("");
   };
 
   return (
     <div>
       <form onSubmit={submitHandler}>
         <div className="form-container">
-          <h1 className="form-title">Create a new event</h1>
+          <h1 className="form-title">Create a Review</h1>
 
-          <h5>TITLE</h5>
+          <h5>FACILITY</h5>
+
+          <select
+            value={facility}
+            name="facility"
+            onChange={(e) => setFacility(e.target.value)}
+          >
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+
+          <h5>STAFF</h5>
+
+          <select
+            value={staff}
+            name="staff"
+            onChange={(e) => setStaff(e.target.value)}
+          >
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+
+          <h5>SERVICES</h5>
+
+          <select
+            value={services}
+            name="services"
+            onChange={(e) => setServices(e.target.value)}
+          >
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <h5>COMMENT</h5>
 
           <input
-            value={title}
-            name="title"
-            placeholder="Insert a title"
-            onChange={(e) => setTitle(e.target.value)}
+            value={comment}
+            name="comment"
+            placeholder="Insert a comment"
+            onChange={(e) => setComment(e.target.value)}
             type="text"
           />
 
-          <h5>DATE</h5>
-
-          <input
-            value={date}
-            name="date"
-            type="datetime-local"
-            onChange={(e) => setDate(e.target.value)}
-          />
-
-          <h5>VENUE</h5>
-
-          <input
-            value={venue}
-            name="venue"
-            placeholder="Insert a venue"
-            onChange={(e) => setVenue(e.target.value)}
-            type="text"
-          />
-
-          <button type="submit" disabled={!title || !venue || !date}>
-            Create
+          <button type="submit" disabled={!facility || !staff || !services}>
+            Create Review
           </button>
         </div>
       </form>

@@ -6,6 +6,8 @@ router.get("/schools", controller.getAllSchools);
 router.get("/users", controller.getAllUsers);
 router.get("/reviews", controller.getAllReviews);
 
+router.post("/user", controller.getUser);
+
 router.post("/schoolReviews/:SchoolId", controller.getSchoolReviews);
 router.post("/createUser", controller.createUser);
 router.post("/createSchool", controller.createSchool);

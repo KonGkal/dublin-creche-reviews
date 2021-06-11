@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 const db = require("../models/index");
 
-// DELETE WHEN FRONTEND IS FIXED
 const getAllUsers = async (req, res) => {
   try {
     const users = await db.User.findAll();
@@ -96,6 +95,17 @@ const getSchoolReviews = async (req, res) => {
   }
 };
 
+const getUser = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await db.User.findAll({ where: { email } });
+    res.json(user).status(200);
+  } catch (error) {
+    console.log(error);
+    res.status(500);
+  }
+};
+
 const deleteReview = async (req, res) => {
   try {
     const { id } = req.params;
@@ -140,4 +150,5 @@ module.exports = {
   getSchoolReviews,
   deleteReview,
   updateReview,
+  getUser,
 };

@@ -14,7 +14,6 @@ function App() {
       setSchools(schools);
     });
   }, []);
-  console.log(schools);
 
   const { isLoading } = useAuth0();
 
