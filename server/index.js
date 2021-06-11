@@ -1,9 +1,10 @@
-const express = require('express');
+/* eslint-disable no-console */
+const express = require("express");
 require("dotenv").config();
-const router = require('./router');
-const cors = require('cors');
+const cors = require("cors");
+const router = require("./router");
 
-const db = require('./models/index');
+const db = require("./models/index");
 
 const app = express();
 const port = process.env.EXPRESS_PORT || 3001;
@@ -11,9 +12,9 @@ const port = process.env.EXPRESS_PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-app.use('/',  router);
+app.use("/", router);
 
-(async function bootstrap () {
+(async function bootstrap() {
   await db.sequelize.sync();
   app.listen(port, () => {
     console.log(`Listening to server http://localhost:${port}`);

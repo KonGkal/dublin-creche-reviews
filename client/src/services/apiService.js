@@ -1,6 +1,6 @@
-const baseUrl = 'http://localhost:3001';
+const baseUrl = "http://localhost:3001";
 
-async function getSchools () {
+async function getSchools() {
   try {
     const res = await fetch(`${baseUrl}/schools`);
     return await res.json();
@@ -11,4 +11,4 @@ async function getSchools () {
 
 module.exports = {
   getSchools,
-}
+};

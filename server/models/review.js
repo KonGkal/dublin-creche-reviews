@@ -1,39 +1,36 @@
 module.exports = (sequelize, DataTypes) => {
-
-  const Review = sequelize.define('Review', {
+  const Review = sequelize.define("Review", {
     facility: {
       allowNull: false,
       type: DataTypes.INTEGER,
       validate: {
-        is: /[0-5]/
+        is: /[0-5]/,
       },
     },
     staff: {
       allowNull: false,
       type: DataTypes.INTEGER,
       validate: {
-        is: /[0-5]/
+        is: /[0-5]/,
       },
     },
     services: {
       allowNull: false,
       type: DataTypes.INTEGER,
       validate: {
-        is: /[0-5]/
+        is: /[0-5]/,
       },
     },
     comment: {
-      type: DataTypes.STRING
-    }
+      type: DataTypes.STRING,
+    },
+  });
 
-})
-
-  Review.associate = db => {
+  Review.associate = (db) => {
     db.Review.belongsTo(db.User, {
-      foreignKey: { allowNull: false }
+      foreignKey: { allowNull: false },
     });
   };
 
   return Review;
-  
 };
