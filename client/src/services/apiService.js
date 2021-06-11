@@ -19,12 +19,10 @@ async function getAllUsers() {
 }
 
 async function addNewUser(email) {
-  console.log(email);
-  const password = "string";
   try {
     const res = await fetch(`${baseUrl}/createUser`, {
       method: "POST",
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email }),
       headers: {
         "Content-Type": "application/json",
       },
