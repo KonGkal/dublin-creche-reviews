@@ -1,9 +1,10 @@
 const router = require("express").Router();
+const { checkJwt } = require("./auth/checkJwt");
 
 const controller = require("./controllers/controllers");
 
 router.get("/schools", controller.getAllSchools);
-router.get("/users", controller.getAllUsers);
+router.get("/users", checkJwt, controller.getAllUsers);
 router.get("/reviews", controller.getAllReviews);
 
 router.post("/user", controller.getUser);

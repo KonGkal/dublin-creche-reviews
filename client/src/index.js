@@ -13,7 +13,6 @@ ReactDOM.render(
         <App />
       </Auth0ProviderWithHistory>
     </Router>
-    ,
   </React.StrictMode>,
   document.getElementById("root")
 );

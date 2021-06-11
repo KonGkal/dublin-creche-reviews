@@ -1,13 +1,27 @@
 import { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import {
-  getAllUsers,
-  addNewUser,
-  findUserbyEmail,
-} from "../../services/apiService";
+import { addNewUser, findUserbyEmail } from "../../services/apiService";
 import "./ReviewForm.css";
 
 const ReviewForm = () => {
+  const [userDetails, setUserDetails] = useState([]);
+  const { getAccessTokenSilently } = useAuth0();
+
+  const getAllUsers = async () => {
+    try {
+      const token = await getAccessTokenSilently();
+
+      const res = await fetch(`http://localhost:3001/users`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return res.json();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const { user } = useAuth0();
   const { email } = user;
 
@@ -20,14 +34,11 @@ const ReviewForm = () => {
 
   isExistingUser(email);
 
-  const [userDetails, setUserDetails] = useState([]);
-
   useEffect(() => {
     findUserbyEmail(email).then((user) => {
       setUserDetails(user);
     });
   }, [email]);
-
   console.log(userDetails);
 
   const [facility, setFacility] = useState("");

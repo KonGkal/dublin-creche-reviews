@@ -2,6 +2,7 @@
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
+const helmet = require("helmet");
 const router = require("./router");
 
 const db = require("./models/index");
@@ -9,6 +10,7 @@ const db = require("./models/index");
 const app = express();
 const port = process.env.EXPRESS_PORT || 3001;
 
+app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
