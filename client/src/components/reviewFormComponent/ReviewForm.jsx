@@ -1,7 +1,24 @@
 import { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { getAllUsers, addNewUser } from "../../services/apiService";
 import "./ReviewForm.css";
 
 const ReviewForm = () => {
+  const { user } = useAuth0();
+  const { email } = user;
+
+  console.log(email);
+
+  const isExistingUser = (userEmail) => {
+    getAllUsers().then((res) => {
+      console.log(res);
+      if (res.filter((user) => user.email === userEmail).length === 0)
+        addNewUser(email);
+    });
+  };
+
+  isExistingUser(email);
+
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [venue, setVenue] = useState("");
