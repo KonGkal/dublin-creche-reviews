@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 import { getSchools } from "./services/apiService";
 // import auth from './utils/auth';
 import Navbar from "./components/navbarComponent/Navbar";
@@ -17,10 +16,8 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
-        <Navbar />
-        <Dashboard schools={schools} />
-      </Router>
+      <Navbar />
+      <Dashboard schools={schools} />
     </div>
   );
 }

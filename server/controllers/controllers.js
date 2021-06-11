@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const db = require("../models/index");
 
 // DELETE WHEN FRONTEND IS FIXED
