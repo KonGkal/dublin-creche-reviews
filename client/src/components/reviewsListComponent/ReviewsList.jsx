@@ -1,11 +1,26 @@
 import React from "react";
 import ListedReview from "../listedReviewComponent/ListedReview";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { getSchoolReviews } from "../../services/apiService";
 
 const ReviewsList = () => {
-  useEffect(() => {}, []);
+  const [reviews, setReviews] = useState([]);
 
-  return <div>ReviewsList Component</div>;
+  useEffect(() => {
+    getSchoolReviews(1).then((schoolReviews) => {
+      setReviews(schoolReviews);
+    });
+  }, []);
+
+  const listOfReviews = reviews.map((review) => {
+    return <ListedReview key={review.id} review={review} />;
+  });
+
+  return (
+    <div>
+      <ul>{listOfReviews}</ul>
+    </div>
+  );
 };
 
 export default ReviewsList;

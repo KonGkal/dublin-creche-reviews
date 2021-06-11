@@ -6,11 +6,7 @@ import ListedSchool from "../listedSchoolComponent/ListedSchool";
 const SchoolList = ({ schools }) => {
   const schoolList = schools.map((school) => (
     <Link key={school.id} to="/schoolReviews">
-      <ListedSchool
-        key={school.id}
-        school={school}
-        onClick={console.log(school.id)}
-      />
+      <ListedSchool key={school.id} school={school} />
     </Link>
   ));
 

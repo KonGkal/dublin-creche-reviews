@@ -41,7 +41,7 @@ export const findUserbyEmail = async (email) => {
 
 export const getSchoolReviews = async (SChoolId) => {
   try {
-    const res = await fetch(`${baseUrl}/schoolReviews/:${SChoolId}`, {
+    const res = await fetch(`${baseUrl}/schoolReviews/${SChoolId}`, {
       method: "POST",
       body: JSON.stringify({ SChoolId }),
       headers: {
