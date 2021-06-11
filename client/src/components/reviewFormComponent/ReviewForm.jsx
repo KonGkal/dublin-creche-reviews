@@ -18,14 +18,15 @@ const ReviewForm = () => {
     });
   };
 
+  isExistingUser(email);
+
   const [userDetails, setUserDetails] = useState([]);
 
   useEffect(() => {
-    isExistingUser(email);
     findUserbyEmail(email).then((user) => {
       setUserDetails(user);
     });
-  }, []);
+  }, [email]);
 
   console.log(userDetails);
 
