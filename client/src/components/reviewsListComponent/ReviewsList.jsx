@@ -6,7 +6,7 @@ import { getSchoolReviews } from "../../services/apiService";
 const ReviewsList = (props) => {
   const [reviews, setReviews] = useState([]);
 
-  const schoolId = props.location.pathname.slice(-1);
+  const schoolId = props.location.pathname.split("/").pop();
 
   useEffect(() => {
     getSchoolReviews(schoolId).then((schoolReviews) => {

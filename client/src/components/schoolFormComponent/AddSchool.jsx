@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { addSchool } from "../../services/apiService";
 
-const AddSchool = ({ addSchool }) => {
+const AddSchool = ({ setSchools }) => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
 
-  const addSchoolSubmitHandler = (event) => {
+  const addSchoolSubmitHandler = async (event) => {
     event.preventDefault();
 
-    addSchool(name, address);
+    const newSchool = await addSchool(name, address);
+    setSchools((prev) => [...prev, newSchool]);
 
     setName("");
     setAddress("");

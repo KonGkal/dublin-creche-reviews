@@ -3,9 +3,6 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       allowNull: false,
       type: DataTypes.STRING,
-      validate: {
-        is: /^\w{2,}$/,
-      },
     },
     address: {
       allowNull: false,
