@@ -69,7 +69,7 @@ const ReviewForm = () => {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <SelectedSchoolContext.Provider
         value={{ selectedSchool, setSelectedSchool }}
       >
@@ -77,10 +77,10 @@ const ReviewForm = () => {
       </SelectedSchoolContext.Provider>
 
       <form onSubmit={submitHandler}>
-        <div className="form-container">
+        <div>
           <h1 className="form-title">Create a Review</h1>
 
-          <h5>FACILITY</h5>
+          <h5>Facility</h5>
 
           <select
             value={facility}
@@ -95,7 +95,7 @@ const ReviewForm = () => {
             <option value="5">5</option>
           </select>
 
-          <h5>STAFF</h5>
+          <h5>Staff</h5>
 
           <select
             value={staff}
@@ -110,7 +110,7 @@ const ReviewForm = () => {
             <option value="5">5</option>
           </select>
 
-          <h5>SERVICES</h5>
+          <h5>Services</h5>
 
           <select
             value={services}

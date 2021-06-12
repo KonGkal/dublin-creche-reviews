@@ -1,5 +1,6 @@
 import PickSchool from "./PickSchool";
 import AddSchool from "./AddSchool";
+import "./SchoolFormContainer.css";
 
 const SchoolFormContainer = () => {
   return (
