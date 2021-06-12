@@ -2,11 +2,12 @@ import React from "react";
 import ListedReview from "../listedReviewComponent/ListedReview";
 import { useEffect, useState } from "react";
 import { getSchoolReviews } from "../../services/apiService";
+import { useParams } from "react-router-dom";
 
-const ReviewsList = (props) => {
+const ReviewsList = () => {
   const [reviews, setReviews] = useState([]);
 
-  const schoolId = props.location.pathname.split("/").pop();
+  const { schoolId } = useParams();
 
   useEffect(() => {
     getSchoolReviews(schoolId).then((schoolReviews) => {

@@ -5,7 +5,7 @@ import "./ReviewForm.css";
 import SchoolFormContainer from "../schoolFormComponent/SchoolFormContainer";
 import SelectedSchoolContext from "../../context/SelectedSchoolContext";
 
-const ReviewForm = ({ schools, setSchools }) => {
+const ReviewForm = () => {
   const [selectedSchool, setSelectedSchool] = useState("");
   const [userDetails, setUserDetails] = useState([]);
   const { user, getAccessTokenSilently } = useAuth0();

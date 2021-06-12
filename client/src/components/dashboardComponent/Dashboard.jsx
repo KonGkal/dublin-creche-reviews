@@ -10,7 +10,7 @@ const Dashboard = () => {
       <Switch>
         <Route exact path="/" component={SchoolList} />
         <Route path="/review" component={ReviewForm} />
-        <Route path="/schoolReviews/:id" exact component={ReviewsList} />
+        <Route path="/schoolReviews/:schoolId" exact component={ReviewsList} />
       </Switch>
     </div>
   );
