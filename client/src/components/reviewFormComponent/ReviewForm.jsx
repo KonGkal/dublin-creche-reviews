@@ -5,9 +5,11 @@ import "./ReviewForm.css";
 import SchoolFormContainer from "../schoolFormComponent/SchoolFormContainer";
 
 const ReviewForm = ({ schools, setSchools }) => {
+  const [selectedSchool, setSelectedSchool] = useState("");
   const [userDetails, setUserDetails] = useState([]);
   const { user, getAccessTokenSilently } = useAuth0();
   const { email } = user;
+  console.log(selectedSchool);
 
   const getAllUsers = async () => {
     try {
@@ -58,7 +60,12 @@ const ReviewForm = ({ schools, setSchools }) => {
 
   return (
     <div>
-      <SchoolFormContainer schools={schools} setSchools={setSchools} />
+      <SchoolFormContainer
+        selectedSchools={selectedSchool}
+        setSelectedSchool={setSelectedSchool}
+        schools={schools}
+        setSchools={setSchools}
+      />
       <form onSubmit={submitHandler}>
         <div className="form-container">
           <h1 className="form-title">Create a Review</h1>

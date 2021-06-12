@@ -1,11 +1,8 @@
-import { useState } from "react";
-
-const PickSchool = ({ schools }) => {
-  const [selectedSchool, setSelectedSchool] = useState([]);
-  console.log(selectedSchool);
-
+const PickSchool = ({ schools, selectedSchool, setSelectedSchool }) => {
   const schoolList = schools.map((school) => (
-    <option value={school.id}>{school.name}</option>
+    <option key={school.id} value={school.id}>
+      {school.name}
+    </option>
   ));
 
   return (
