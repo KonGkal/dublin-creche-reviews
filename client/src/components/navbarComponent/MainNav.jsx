@@ -7,11 +7,11 @@ const MainNav = () => {
 
   return (
     <div>
-      <ul>
-        <li>{isAuthenticated ? <Link to="/review">Review</Link> : null}</li>
-        <li>
+      <ul className="container">
+        <li style={{ marginRight: "1em" }}>
           <Link to="/">Home</Link>
         </li>
+        <li>{isAuthenticated ? <Link to="/review">Review</Link> : null}</li>
       </ul>
     </div>
   );
