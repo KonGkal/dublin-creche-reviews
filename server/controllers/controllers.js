@@ -34,8 +34,8 @@ const getAllSchools = async (req, res) => {
 
 const createUser = async (req, res) => {
   try {
-    const { email, password } = req.body;
-    const newUser = await db.User.create({ email, password });
+    const { email } = req.body;
+    const newUser = await db.User.create({ email });
     res.json(newUser).status(201);
   } catch (error) {
     console.log(error);
@@ -46,7 +46,9 @@ const createUser = async (req, res) => {
 const createSchool = async (req, res) => {
   try {
     const { name, address } = req.body;
-    const newSchool = await db.School.create({ name, address });
+    const newSchool = await db.School.findOrCreate({
+      where: { name, address },
+    });
     res.json(newSchool).status(201);
   } catch (error) {
     console.log(error);

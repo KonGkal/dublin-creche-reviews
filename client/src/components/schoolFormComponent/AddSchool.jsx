@@ -9,7 +9,7 @@ const AddSchool = ({ setSchools }) => {
     event.preventDefault();
 
     const newSchool = await addSchool(name, address);
-    setSchools((prev) => [...prev, newSchool]);
+    setSchools((prev) => [...prev, newSchool[0]]);
 
     setName("");
     setAddress("");
@@ -19,16 +19,16 @@ const AddSchool = ({ setSchools }) => {
       <div>
         <h3>School Name</h3>
         <input
-          value={name}
+          value={name || ""}
           placeholder="Add schools name"
-          onChange={(e) => setName(e.target.value)} //check IIFE
+          onChange={(e) => setName(e.target.value)}
           type="text"
         />
         <h3>School Address</h3>
         <input
-          value={address}
+          value={address || ""}
           placeholder="Add schools address"
-          onChange={(e) => setAddress(e.target.value)} //check IIFE
+          onChange={(e) => setAddress(e.target.value)}
           type="text"
         />
         <button type="submit" disabled={!name || !address}>

@@ -40,9 +40,9 @@ const ReviewForm = ({ schools, setSchools }) => {
   }, [email]);
   console.log(userDetails);
 
-  const [facility, setFacility] = useState(null);
-  const [staff, setStaff] = useState(null);
-  const [services, setServices] = useState(null);
+  const [facility, setFacility] = useState("");
+  const [staff, setStaff] = useState("");
+  const [services, setServices] = useState("");
   const [comment, setComment] = useState("");
 
   const submitHandler = (event) => {
