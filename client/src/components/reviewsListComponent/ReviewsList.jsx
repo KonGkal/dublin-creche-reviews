@@ -8,13 +8,11 @@ const ReviewsList = (props) => {
 
   const schoolId = props.location.pathname.slice(-1);
 
-  console.log(props.location.pathname.slice(-1));
-
   useEffect(() => {
     getSchoolReviews(schoolId).then((schoolReviews) => {
       setReviews(schoolReviews);
     });
-  }, []);
+  }, [schoolId]);
 
   const listOfReviews = reviews.map((review) => {
     return <ListedReview key={review.id} review={review} />;
