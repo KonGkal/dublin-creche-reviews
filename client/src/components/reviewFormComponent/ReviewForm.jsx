@@ -1,15 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { addNewUser, findUserbyEmail } from "../../services/apiService";
 import "./ReviewForm.css";
 import SchoolFormContainer from "../schoolFormComponent/SchoolFormContainer";
 import SelectedSchoolContext from "../../context/SelectedSchoolContext";
+import { useParams } from "react-router-dom";
+import ReviewsContext from "../../context/ReviewsContext";
 
 const ReviewForm = () => {
   const [selectedSchool, setSelectedSchool] = useState("");
   const [userDetails, setUserDetails] = useState([]);
   const { user, getAccessTokenSilently } = useAuth0();
   const { email } = user;
+  const { reviews, setReviews } = useContext(ReviewsContext);
   console.log(selectedSchool);
 
   const getAllUsers = async () => {
@@ -46,12 +49,12 @@ const ReviewForm = () => {
   const [facility, setFacility] = useState("");
   const [staff, setStaff] = useState("");
   const [services, setServices] = useState("");
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState("No Comment");
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
 
-    // createReview(facility, staff, services, comment = "No Comment" )
+    // const newReview = await createReview(facility, staff, services, comment);
 
     setFacility("");
     setStaff("");

@@ -1,11 +1,12 @@
 import React from "react";
 import ListedReview from "../listedReviewComponent/ListedReview";
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
 import { getSchoolReviews } from "../../services/apiService";
 import { useParams } from "react-router-dom";
+import ReviewsContext from "../../context/ReviewsContext";
 
 const ReviewsList = () => {
-  const [reviews, setReviews] = useState([]);
+  const { reviews, setReviews } = useContext(ReviewsContext);
 
   const { schoolId } = useParams();
 
@@ -13,7 +14,7 @@ const ReviewsList = () => {
     getSchoolReviews(schoolId).then((schoolReviews) => {
       setReviews(schoolReviews);
     });
-  }, [schoolId]);
+  }, [schoolId, setReviews]);
 
   const listOfReviews = reviews.map((review) => {
     return <ListedReview key={review.id} review={review} />;
