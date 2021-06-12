@@ -67,3 +67,32 @@ export const addSchool = async (name, address) => {
     console.log(e);
   }
 };
+
+export const createReview = async (
+  facility,
+  staff,
+  services,
+  comment,
+  UserId,
+  SchoolId
+) => {
+  try {
+    const res = await fetch(`${baseUrl}/createReview`, {
+      method: "POST",
+      body: JSON.stringify({
+        facility,
+        staff,
+        services,
+        comment,
+        UserId,
+        SchoolId,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return await res.json();
+  } catch (e) {
+    console.log(e);
+  }
+};
