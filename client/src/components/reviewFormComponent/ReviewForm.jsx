@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { addNewUser, findUserbyEmail } from "../../services/apiService";
 import "./ReviewForm.css";
+import SchoolForm from "../schoolFormComponent/SchoolForm";
 
 const ReviewForm = () => {
   const [userDetails, setUserDetails] = useState([]);
@@ -57,6 +58,7 @@ const ReviewForm = () => {
 
   return (
     <div>
+      <SchoolForm />
       <form onSubmit={submitHandler}>
         <div className="form-container">
           <h1 className="form-title">Create a Review</h1>
