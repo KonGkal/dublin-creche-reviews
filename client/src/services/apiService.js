@@ -43,7 +43,6 @@ export const getSchoolReviews = async (SChoolId) => {
   try {
     const res = await fetch(`${baseUrl}/schoolReviews/${SChoolId}`, {
       method: "POST",
-      body: JSON.stringify({ SChoolId }),
       headers: {
         "Content-Type": "application/json",
       },

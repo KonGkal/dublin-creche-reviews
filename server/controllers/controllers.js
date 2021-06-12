@@ -142,7 +142,7 @@ const updateReview = async (req, res) => {
 
 module.exports = {
   getAllReviews, // DELETE WHEN FRONTEND IS FIXED
-  getAllUsers, // DELETE WHEN FRONTEND IS FIXED
+  getAllUsers,
   getAllSchools,
   createUser,
   createSchool,

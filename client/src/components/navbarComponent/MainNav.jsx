@@ -10,8 +10,7 @@ const MainNav = () => {
       <ul>
         <li>{isAuthenticated ? <Link to="/review">Review</Link> : null}</li>
         <li>
-          {" "}
-          <Link to="/">Home</Link>{" "}
+          <Link to="/">Home</Link>
         </li>
       </ul>
     </div>
