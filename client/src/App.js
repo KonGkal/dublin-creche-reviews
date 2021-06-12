@@ -28,7 +28,7 @@ function App() {
       <SchoolsContext.Provider value={{ schools, setSchools }}>
         <Dashboard schools={schools} setSchools={setSchools} />
       </SchoolsContext.Provider>
-      <footer>This must be a footer</footer>
+      <footer>© KonGkal 2021 All rights reserved </footer>
     </div>
   );
 }
