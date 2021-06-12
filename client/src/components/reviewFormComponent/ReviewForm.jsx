@@ -4,7 +4,7 @@ import { addNewUser, findUserbyEmail } from "../../services/apiService";
 import "./ReviewForm.css";
 import SchoolFormContainer from "../schoolFormComponent/SchoolFormContainer";
 
-const ReviewForm = () => {
+const ReviewForm = ({ schools, setSchools }) => {
   const [userDetails, setUserDetails] = useState([]);
   const { user, getAccessTokenSilently } = useAuth0();
   const { email } = user;
@@ -50,15 +50,15 @@ const ReviewForm = () => {
 
     // createReview(facility, staff, services, comment = "No Comment" )
 
-    setFacility(0);
-    setStaff(0);
-    setServices(0);
+    setFacility("");
+    setStaff("");
+    setServices("");
     setComment("");
   };
 
   return (
     <div>
-      <SchoolFormContainer />
+      <SchoolFormContainer schools={schools} setSchools={setSchools} />
       <form onSubmit={submitHandler}>
         <div className="form-container">
           <h1 className="form-title">Create a Review</h1>

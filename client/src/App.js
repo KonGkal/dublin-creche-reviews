@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Dashboard schools={schools} />
+      <Dashboard schools={schools} setSchools={setSchools} />
       <footer>This must be a footer</footer>
     </div>
   );

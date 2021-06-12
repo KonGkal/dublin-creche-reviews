@@ -4,7 +4,8 @@ import SchoolList from "../schoolsListComponent/SchoolList";
 import ReviewForm from "../reviewFormComponent/ReviewForm";
 import ReviewsList from "../reviewsListComponent/ReviewsList";
 
-const Dashboard = ({ schools }) => {
+const Dashboard = ({ schools, setSchools }) => {
+  console.log(setSchools);
   return (
     <div>
       <Switch>
@@ -13,7 +14,12 @@ const Dashboard = ({ schools }) => {
           path="/"
           render={(listOfSchools) => <SchoolList schools={schools} />}
         />
-        <Route path="/review" component={ReviewForm} />
+        <Route
+          path="/review"
+          render={() => (
+            <ReviewForm schools={schools} setSchools={setSchools} />
+          )}
+        />
         <Route path="/schoolReviews/:id" exact component={ReviewsList} />
       </Switch>
     </div>
