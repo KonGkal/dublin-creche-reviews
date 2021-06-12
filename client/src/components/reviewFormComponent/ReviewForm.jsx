@@ -3,6 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { addNewUser, findUserbyEmail } from "../../services/apiService";
 import "./ReviewForm.css";
 import SchoolFormContainer from "../schoolFormComponent/SchoolFormContainer";
+import SelectedSchoolContext from "../../context/SelectedSchoolContext";
 
 const ReviewForm = ({ schools, setSchools }) => {
   const [selectedSchool, setSelectedSchool] = useState("");
@@ -60,12 +61,12 @@ const ReviewForm = ({ schools, setSchools }) => {
 
   return (
     <div>
-      <SchoolFormContainer
-        selectedSchools={selectedSchool}
-        setSelectedSchool={setSelectedSchool}
-        schools={schools}
-        setSchools={setSchools}
-      />
+      <SelectedSchoolContext.Provider
+        value={{ selectedSchool, setSelectedSchool }}
+      >
+        <SchoolFormContainer />
+      </SelectedSchoolContext.Provider>
+
       <form onSubmit={submitHandler}>
         <div className="form-container">
           <h1 className="form-title">Create a Review</h1>

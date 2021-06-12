@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./SchoolList.css";
 import ListedSchool from "../listedSchoolComponent/ListedSchool";
+import { useContext } from "react";
+import SchoolsContext from "../../context/SchoolsContext";
 
-const SchoolList = ({ schools }) => {
-  console.log(schools);
+const SchoolList = () => {
+  const { schools } = useContext(SchoolsContext);
 
   const schoolList = schools.map((school) => (
     <Link key={school.id} to={`/schoolReviews/${school.id}`}>

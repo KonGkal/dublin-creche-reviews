@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { addSchool } from "../../services/apiService";
+import { useContext } from "react";
+import SchoolsContext from "../../context/SchoolsContext";
 
-const AddSchool = ({ setSchools }) => {
+const AddSchool = () => {
+  const { setSchools } = useContext(SchoolsContext);
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
 
