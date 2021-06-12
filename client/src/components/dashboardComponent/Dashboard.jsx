@@ -14,7 +14,7 @@ const Dashboard = ({ schools }) => {
           render={(listOfSchools) => <SchoolList schools={schools} />}
         />
         <Route path="/review" component={ReviewForm} />
-        <Route path="/schoolReviews" component={ReviewsList} />
+        <Route path="/schoolReviews/:id" exact component={ReviewsList} />
       </Switch>
     </div>
   );

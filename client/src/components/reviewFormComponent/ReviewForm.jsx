@@ -39,9 +39,9 @@ const ReviewForm = () => {
   }, [email]);
   console.log(userDetails);
 
-  const [facility, setFacility] = useState("");
-  const [staff, setStaff] = useState("");
-  const [services, setServices] = useState("");
+  const [facility, setFacility] = useState(null);
+  const [staff, setStaff] = useState(null);
+  const [services, setServices] = useState(null);
   const [comment, setComment] = useState("");
 
   const submitHandler = (event) => {
@@ -49,9 +49,9 @@ const ReviewForm = () => {
 
     // createReview(facility, staff, services, comment = "No Comment" )
 
-    setFacility("");
-    setStaff("");
-    setServices("");
+    setFacility(0);
+    setStaff(0);
+    setServices(0);
     setComment("");
   };
 

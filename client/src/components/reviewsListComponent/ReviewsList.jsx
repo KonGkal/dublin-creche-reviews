@@ -3,11 +3,15 @@ import ListedReview from "../listedReviewComponent/ListedReview";
 import { useEffect, useState } from "react";
 import { getSchoolReviews } from "../../services/apiService";
 
-const ReviewsList = () => {
+const ReviewsList = (props) => {
   const [reviews, setReviews] = useState([]);
 
+  const schoolId = props.location.pathname.slice(-1);
+
+  console.log(props.location.pathname.slice(-1));
+
   useEffect(() => {
-    getSchoolReviews(1).then((schoolReviews) => {
+    getSchoolReviews(schoolId).then((schoolReviews) => {
       setReviews(schoolReviews);
     });
   }, []);
