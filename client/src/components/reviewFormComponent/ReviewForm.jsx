@@ -13,7 +13,6 @@ const ReviewForm = () => {
   const { user, getAccessTokenSilently } = useAuth0();
   const { email } = user;
   const { setReviews } = useContext(ReviewsContext);
-  console.log(selectedSchool);
 
   const getAllUsers = async () => {
     try {
@@ -44,13 +43,11 @@ const ReviewForm = () => {
       setUserDetails(user);
     });
   }, [email]);
-  console.log(userDetails[0].id);
 
   const [facility, setFacility] = useState("");
   const [staff, setStaff] = useState("");
   const [services, setServices] = useState("");
   const [comment, setComment] = useState("No Comment");
-  const dbUserId = userDetails[0].id;
 
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -60,7 +57,7 @@ const ReviewForm = () => {
       staff,
       services,
       comment,
-      dbUserId,
+      userDetails[0].id,
       selectedSchool
     );
     setReviews((prev) => [...prev, newReview]);
