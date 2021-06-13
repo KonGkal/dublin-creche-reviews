@@ -12,9 +12,10 @@ const getAllUsers = async (req, res) => {
 };
 
 // DELETE WHEN FRONTEND IS FIXED
-const getAllReviews = async (req, res) => {
+const getUserReviews = async (req, res) => {
   try {
-    const reviews = await db.Review.findAll();
+    const { UserId } = req.body;
+    const reviews = await db.Review.findByPk(UserId);
     res.json(reviews).status(200);
   } catch (error) {
     console.log(error);
@@ -118,31 +119,8 @@ const deleteReview = async (req, res) => {
   }
 };
 
-const updateReview = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { facility, staff, services, comment, UserId, SchoolId } = req.body;
-    if (comment) {
-      const updatedReview = await db.Review.update(
-        { facility, staff, services, comment, UserId, SchoolId },
-        { where: { id } }
-      );
-      res.json(updatedReview).status(200);
-    } else {
-      const updatedReview = await db.Review.update(
-        { facility, staff, services, UserId, SchoolId, comment: null },
-        { where: { id } }
-      );
-      res.json(updatedReview).status(200);
-    }
-  } catch (error) {
-    console.log(error);
-    res.status(500);
-  }
-};
-
 module.exports = {
-  getAllReviews, // DELETE WHEN FRONTEND IS FIXED
+  getUserReviews,
   getAllUsers,
   getAllSchools,
   createUser,
@@ -150,6 +128,5 @@ module.exports = {
   createReviewOrUpdate,
   getSchoolReviews,
   deleteReview,
-  updateReview,
   getUser,
 };

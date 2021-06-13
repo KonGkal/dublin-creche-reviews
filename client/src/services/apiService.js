@@ -96,3 +96,18 @@ export const createReview = async (
     console.log(e);
   }
 };
+
+export const getUserReviews = async (UserId) => {
+  try {
+    const res = await fetch(`http://localhost:3001/userReviews`, {
+      method: "POST",
+      body: JSON.stringify({ UserId }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return await res.json();
+  } catch (e) {
+    console.log(e);
+  }
+};

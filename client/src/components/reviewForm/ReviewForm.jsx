@@ -11,8 +11,8 @@ const ReviewForm = () => {
   const [selectedSchool, setSelectedSchool] = useState("");
   const [userDetails, setUserDetails] = useState([]);
   const { user, getAccessTokenSilently } = useAuth0();
-  const { email } = user;
   const { setReviews } = useContext(ReviewsContext);
+  const { email } = user;
 
   const getAllUsers = async () => {
     try {
