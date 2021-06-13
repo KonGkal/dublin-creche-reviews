@@ -9,7 +9,6 @@ const MyReviews = () => {
 
   useEffect(() => {
     if (userDetails.length) {
-      console.log("in useEffect", userDetails[0].id);
       getUserReviews(userDetails[0].id).then((reviews) => {
         setUserReviews(reviews);
       });

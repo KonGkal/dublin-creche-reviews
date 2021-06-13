@@ -8,7 +8,7 @@ const ListedReview = ({ review }) => {
       <div>Facility: {facility}</div>
       <div>Staff: {staff}</div>
       <div>Services: {services}</div>
-      <div>Overall User: {(facility + staff + services) / 3}</div>
+      <div>Overall User: {((facility + staff + services) / 3).toFixed(1)}</div>
       <div>{comment}</div>
     </li>
   );
