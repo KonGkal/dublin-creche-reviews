@@ -1,8 +1,9 @@
 import React from "react";
 import AuthenticationButton from "../authenticationButtonComponent/AuthenticationButton";
+import "./Navbar.css";
 
 const AuthNav = () => (
-  <div>
+  <div className="auth-nav-bar">
     <AuthenticationButton />
   </div>
 );

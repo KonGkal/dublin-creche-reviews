@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { addNewUser, findUserbyEmail } from "../../services/apiService";
 import "./ReviewForm.css";
-import SchoolFormContainer from "../schoolFormComponent/SchoolFormContainer";
+import SchoolFormContainer from "../schoolForm/SchoolFormContainer";
 import SelectedSchoolContext from "../../context/SelectedSchoolContext";
 import ReviewsContext from "../../context/ReviewsContext";
 import { createReview } from "../../services/apiService";

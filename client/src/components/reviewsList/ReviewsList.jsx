@@ -1,5 +1,5 @@
 import React from "react";
-import ListedReview from "../listedReviewComponent/ListedReview";
+import ListedReview from "../listedReview/ListedReview";
 import { useEffect, useContext } from "react";
 import { getSchoolReviews } from "../../services/apiService";
 import { useParams } from "react-router-dom";

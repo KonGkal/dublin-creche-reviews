@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Switch, Route } from "react-router-dom";
-import SchoolList from "../schoolsListComponent/SchoolList";
-import ReviewForm from "../reviewFormComponent/ReviewForm";
-import ReviewsList from "../reviewsListComponent/ReviewsList";
+import SchoolList from "../schoolsList/SchoolList";
+import ReviewForm from "../reviewForm/ReviewForm";
+import ReviewsList from "../reviewsList/ReviewsList";
 import ReviewsContext from "../../context/ReviewsContext";
 import "./Dashboard.css";
 import { ReactComponent as IconSvg } from "../../icons/noun_Child_1869302.svg";

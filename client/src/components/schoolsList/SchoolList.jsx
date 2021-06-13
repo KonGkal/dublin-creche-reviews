@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./SchoolList.css";
-import ListedSchool from "../listedSchoolComponent/ListedSchool";
+import ListedSchool from "../listedSchool/ListedSchool";
 import { useContext } from "react";
 import SchoolsContext from "../../context/SchoolsContext";
 

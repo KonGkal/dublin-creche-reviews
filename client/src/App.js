@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getSchools } from "./services/apiService";
-import Navbar from "./components/navbarComponent/Navbar";
-import Dashboard from "./components/dashboardComponent/Dashboard";
-import Loading from "./components/loadingComponent/Loading";
+import Navbar from "./components/navbar/Navbar";
+import Dashboard from "./components/dashboard/Dashboard";
+import Loading from "./components/loading/Loading";
 import SchoolsContext from "./context/SchoolsContext";
 import "./App.css";
 
@@ -28,7 +28,7 @@ function App() {
       <div>
         <h1 className="header">Dublin Creche Reviews</h1>
       </div>
-      <Navbar className="navbar" />
+      <Navbar />
       <div className="container">
         <SchoolsContext.Provider value={{ schools, setSchools }}>
           <Dashboard />
