@@ -19,19 +19,21 @@ const ReviewsList = () => {
     return <ListedReview key={review.id} review={review} />;
   });
 
-  const overallRating = [];
-
+  let rating;
   if (reviews.length) {
-    const rating = reviews.reduce((acc, cur) => {
-      console.log();
-      return Number(acc.overall) + Number(cur.overall);
-    });
-    overallRating.push(rating);
+    rating = reviews.reduce((acc, cur) => {
+      return acc + cur.overall;
+    }, 0);
   }
 
   return (
     <div>
-      <h3>School rating {overallRating[0]} </h3>
+      {rating ? (
+        <h3>School rating {(rating / reviews.length).toFixed(1)} </h3>
+      ) : (
+        <h3>School rating</h3>
+      )}
+
       <ul>{listOfReviews}</ul>
     </div>
   );

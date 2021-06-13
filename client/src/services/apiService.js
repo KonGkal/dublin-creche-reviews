@@ -84,7 +84,7 @@ export const createReview = async (
         facility,
         staff,
         services,
-        overall,
+        overall: +overall,
         comment,
         UserId,
         SchoolId,

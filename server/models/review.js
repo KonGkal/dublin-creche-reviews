@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     overall: {
       allowNull: false,
-      type: DataTypes.STRING,
+      type: DataTypes.FLOAT,
     },
     comment: {
       type: DataTypes.STRING,
