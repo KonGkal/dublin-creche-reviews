@@ -9,10 +9,15 @@ const MainNav = () => {
   return (
     <div>
       <ul className="container nav-bar">
-        <li style={{ marginRight: "1em" }}>
+        <li className="main-nav-item">
           <Link to="/">Home</Link>
         </li>
-        <li>{isAuthenticated ? <Link to="/review">Review</Link> : null}</li>
+        <li className="main-nav-item">
+          {isAuthenticated ? <Link to="/review">Review</Link> : null}
+        </li>
+        <li className="main-nav-item">
+          {isAuthenticated ? <Link to="/myReviews">My Reviews</Link> : null}
+        </li>
       </ul>
     </div>
   );
