@@ -59,7 +59,8 @@ const createSchool = async (req, res) => {
 
 const createReviewOrUpdate = async (req, res) => {
   try {
-    const { facility, staff, services, comment, UserId, SchoolId } = req.body;
+    const { facility, staff, services, overall, comment, UserId, SchoolId } =
+      req.body;
 
     const foundReview = await db.Review.findOne({
       where: { SchoolId, UserId },
@@ -69,6 +70,7 @@ const createReviewOrUpdate = async (req, res) => {
         facility,
         staff,
         services,
+        overall,
         comment,
         UserId,
         SchoolId,
@@ -76,7 +78,7 @@ const createReviewOrUpdate = async (req, res) => {
       res.json(newReview).status(201);
     }
     const updatedReview = await db.Review.update(
-      { facility, staff, services, comment, UserId, SchoolId },
+      { facility, staff, services, overall, comment, UserId, SchoolId },
       { where: { id: foundReview.id } }
     );
     res.json(updatedReview).status(200);

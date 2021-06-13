@@ -21,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
         is: /[0-5]/,
       },
     },
+    overall: {
+      allowNull: false,
+      type: DataTypes.STRING,
+    },
     comment: {
       type: DataTypes.STRING,
     },

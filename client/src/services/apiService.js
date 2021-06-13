@@ -77,12 +77,15 @@ export const createReview = async (
   SchoolId
 ) => {
   try {
+    const overall = ((+facility + +staff + +services) / 3).toFixed(1);
+    console.log(typeof facility);
     const res = await fetch(`${baseUrl}/createReview`, {
       method: "POST",
       body: JSON.stringify({
         facility,
         staff,
         services,
+        overall,
         comment,
         UserId,
         SchoolId,

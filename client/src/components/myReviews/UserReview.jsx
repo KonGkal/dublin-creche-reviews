@@ -1,7 +1,7 @@
 import { deleteReview } from "../../services/apiService";
 
 const UserReview = ({ review, setUserReviews }) => {
-  const { id, facility, staff, services, comment } = review;
+  const { id, facility, staff, overall, services, comment } = review;
 
   const deleteReviewHandler = async () => {
     await deleteReview(id);
@@ -12,7 +12,7 @@ const UserReview = ({ review, setUserReviews }) => {
       <div>Facility: {facility}</div>
       <div>Staff: {staff}</div>
       <div>Services: {services}</div>
-      <div>Overall User: {((facility + staff + services) / 3).toFixed(1)}</div>
+      <div>Overall User Rating: {overall}</div>
       <div>{comment}</div>
       <button onClick={deleteReviewHandler}>Delete</button>
     </li>
