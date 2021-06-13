@@ -1,6 +1,4 @@
-import { useState, useEffect, useContext } from "react";
-// import { useAuth0 } from "@auth0/auth0-react";
-// import { addNewUser, findUserbyEmail } from "../../services/apiService";
+import { useState, useContext } from "react";
 import "./ReviewForm.css";
 import SchoolFormContainer from "../schoolForm/SchoolFormContainer";
 import SelectedSchoolContext from "../../context/SelectedSchoolContext";
@@ -10,42 +8,9 @@ import UserDetailsContext from "../../context/UserDetailsContext";
 
 const ReviewForm = () => {
   const [selectedSchool, setSelectedSchool] = useState("");
-  // const [userDetails, setUserDetails] = useState([]);
-  // const { user, getAccessTokenSilently } = useAuth0();
   const { setReviews } = useContext(ReviewsContext);
 
   const { userDetails } = useContext(UserDetailsContext);
-  // const { email } = user;
-
-  // const getAllUsers = async () => {
-  //   try {
-  //     const token = await getAccessTokenSilently();
-
-  //     const res = await fetch(`http://localhost:3001/users`, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
-  //     return res.json();
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
-
-  // const isExistingUser = (userEmail) => {
-  //   getAllUsers().then((res) => {
-  //     if (res.filter((user) => user.email === userEmail).length === 0)
-  //       addNewUser(email);
-  //   });
-  // };
-
-  // isExistingUser(email);
-
-  // useEffect(() => {
-  //   findUserbyEmail(email).then((user) => {
-  //     setUserDetails(user);
-  //   });
-  // }, [email]);
 
   const [facility, setFacility] = useState("");
   const [staff, setStaff] = useState("");

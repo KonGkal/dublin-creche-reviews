@@ -99,7 +99,7 @@ export const createReview = async (
 
 export const getUserReviews = async (UserId) => {
   try {
-    const res = await fetch(`http://localhost:3001/userReviews`, {
+    const res = await fetch(`${baseUrl}/userReviews`, {
       method: "POST",
       body: JSON.stringify({ UserId }),
       headers: {
@@ -107,6 +107,16 @@ export const getUserReviews = async (UserId) => {
       },
     });
     return await res.json();
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const deleteReview = async (id) => {
+  try {
+    return await fetch(`${baseUrl}/deleteReview/${id}`, {
+      method: "DELETE",
+    });
   } catch (e) {
     console.log(e);
   }
