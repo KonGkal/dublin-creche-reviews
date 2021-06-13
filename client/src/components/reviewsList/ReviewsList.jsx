@@ -17,7 +17,7 @@ const ReviewsList = () => {
   }, [schoolId, setReviews]);
 
   const listOfReviews = reviews.map((review) => {
-    return <ListedReview key={review.id} review={review} />;
+    return <ListedReview key={review.updatedAt} review={review} />;
   });
 
   return (

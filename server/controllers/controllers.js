@@ -56,11 +56,14 @@ const createSchool = async (req, res) => {
   }
 };
 
-const createReview = async (req, res) => {
+const createReviewOrUpdate = async (req, res) => {
   try {
     const { facility, staff, services, comment, UserId, SchoolId } = req.body;
 
-    if (comment) {
+    const foundReview = await db.Review.findOne({
+      where: { SchoolId, UserId },
+    });
+    if (!foundReview) {
       const newReview = await db.Review.create({
         facility,
         staff,
@@ -70,16 +73,12 @@ const createReview = async (req, res) => {
         SchoolId,
       });
       res.json(newReview).status(201);
-    } else {
-      const newReview = await db.Review.create({
-        facility,
-        staff,
-        services,
-        UserId,
-        SchoolId,
-      });
-      res.json(newReview).status(201);
     }
+    const updatedReview = await db.Review.update(
+      { facility, staff, services, comment, UserId, SchoolId },
+      { where: { id: foundReview.id } }
+    );
+    res.json(updatedReview).status(200);
   } catch (error) {
     console.log(error);
     res.status(500);
@@ -148,7 +147,7 @@ module.exports = {
   getAllSchools,
   createUser,
   createSchool,
-  createReview,
+  createReviewOrUpdate,
   getSchoolReviews,
   deleteReview,
   updateReview,

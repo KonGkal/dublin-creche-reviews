@@ -12,7 +12,7 @@ router.post("/user", controller.getUser);
 router.post("/schoolReviews/:SchoolId", controller.getSchoolReviews);
 router.post("/createUser", controller.createUser);
 router.post("/createSchool", controller.createSchool);
-router.post("/createReview", controller.createReview);
+router.post("/createReview", controller.createReviewOrUpdate);
 
 router.delete("/deleteReview/:id", controller.deleteReview);
 router.put("/updateReview/:id", controller.updateReview);
