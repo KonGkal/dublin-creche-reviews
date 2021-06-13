@@ -11,10 +11,10 @@ const MyReviews = () => {
       console.log("in useEffect", userDetails[0].id);
       getUserReviews(userDetails[0].id).then((reviews) => {
         setUserReviews(reviews);
-        console.log(userReviews);
       });
     }
   }, [userDetails]);
+  if (userReviews) console.log(userReviews);
 
   return <div>Here are my Reviews</div>;
 };

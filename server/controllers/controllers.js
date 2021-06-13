@@ -15,7 +15,7 @@ const getAllUsers = async (req, res) => {
 const getUserReviews = async (req, res) => {
   try {
     const { UserId } = req.body;
-    const reviews = await db.Review.findByPk(UserId);
+    const reviews = await db.Review.findAll({ wher: { UserId } });
     res.json(reviews).status(200);
   } catch (error) {
     console.log(error);

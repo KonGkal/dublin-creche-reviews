@@ -1,7 +1,6 @@
 import "./ListedSchool.css";
 
 const ListedSchool = ({ school }) => {
-  console.log("Rendering school list");
   const { name, address } = school;
 
   return (
