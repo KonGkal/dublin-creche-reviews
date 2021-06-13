@@ -9,9 +9,6 @@ import { addNewUser, findUserbyEmail } from "../../services/apiService";
 const ReviewsContainer = () => {
   const [userDetails, setUserDetails] = useState([]);
   const { user, getAccessTokenSilently } = useAuth0();
-  const { email } = user;
-
-  console.log(userDetails);
 
   const getAllUsers = async () => {
     try {
@@ -31,17 +28,18 @@ const ReviewsContainer = () => {
   const isExistingUser = (userEmail) => {
     getAllUsers().then((res) => {
       if (res.filter((user) => user.email === userEmail).length === 0)
-        addNewUser(email);
+        addNewUser(user.email);
     });
   };
-
-  isExistingUser(email);
+  if (user) isExistingUser(user.email);
 
   useEffect(() => {
-    findUserbyEmail(email).then((user) => {
-      setUserDetails(user);
-    });
-  }, [email]);
+    if (user) {
+      findUserbyEmail(user.email).then((user) => {
+        setUserDetails(user);
+      });
+    }
+  }, [user]);
 
   return (
     <UserDetailsContext.Provider value={{ userDetails }}>
