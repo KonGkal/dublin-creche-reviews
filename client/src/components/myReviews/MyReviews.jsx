@@ -1,5 +1,10 @@
+import { useState, useEffect, useContext } from "react";
+import UserDetailsContext from "../../context/UserDetailsContext";
+
 const MyReviews = () => {
-  return <div>here are my reviews</div>;
+  const { userDetails } = useContext(UserDetailsContext);
+  console.log(userDetails);
+  return <div>Here are my reviews</div>;
 };
 
 export default MyReviews;

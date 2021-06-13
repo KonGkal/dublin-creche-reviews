@@ -5,6 +5,7 @@ import ReviewForm from "../reviewForm/ReviewForm";
 import ReviewsList from "../reviewsList/ReviewsList";
 import ReviewsContext from "../../context/ReviewsContext";
 import MyReviews from "../myReviews/MyReviews";
+import ReviewsContainer from "../ReviewsContainer/ReviewsContainer";
 import "./Dashboard.css";
 import { ReactComponent as IconSvg } from "../../icons/noun_Child_1869302.svg";
 
@@ -17,8 +18,9 @@ const Dashboard = () => {
       <Switch>
         <Route exact path="/" component={SchoolList} />
         <ReviewsContext.Provider value={{ reviews, setReviews }}>
-          <Route path="/review" component={ReviewForm} />
-          <Route path="/myReviews" component={MyReviews} />
+          <ReviewsContainer />
+          {/* <Route path="/review" component={ReviewForm} />
+          <Route path="/myReviews" component={MyReviews} /> */}
           <Route
             path="/schoolReviews/:schoolId"
             exact
