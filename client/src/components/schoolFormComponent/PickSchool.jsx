@@ -19,6 +19,7 @@ const PickSchool = () => {
       name="selectedSchool"
       onChange={(e) => setSelectedSchool(e.target.value)}
     >
+      <option value="0">Select a School</option>
       {schoolList}
     </select>
   );
