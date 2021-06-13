@@ -19,8 +19,19 @@ const ReviewsList = () => {
     return <ListedReview key={review.id} review={review} />;
   });
 
+  const overallRating = [];
+
+  if (reviews.length) {
+    const rating = reviews.reduce((acc, cur) => {
+      console.log();
+      return Number(acc.overall) + Number(cur.overall);
+    });
+    overallRating.push(rating);
+  }
+
   return (
     <div>
+      <h3>School rating {overallRating[0]} </h3>
       <ul>{listOfReviews}</ul>
     </div>
   );
