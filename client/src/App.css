@@ -15,16 +15,42 @@ body {
   display: flex;
   justify-content: center;
 }
-
 .header {
   border: 1px solid grey;
-  height: 2em;
-  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.54);
+  padding-bottom: 0.3em;
 
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.54);
+  text-align: center;
+  font-size: 35px;
   padding-top: 0.3em;
-  padding-left: 2em;
 }
 
 div {
   border: 1px solid black;
+}
+
+button {
+  /* background-color: #ff9893; */
+  border-radius: 0.2em;
+  opacity: 0.8;
+  height: 1.7em;
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.54);
+}
+
+button:hover {
+  opacity: 1;
+}
+
+path {
+  fill: transparent;
+}
+
+text {
+  font-size: 3em;
+}
+
+footer {
+  margin-top: 1em;
+  text-align: center;
+  font-size: 0.8em;
 }
