@@ -37,9 +37,9 @@ const ReviewForm = () => {
   };
 
   return (
-    <>
+    <div className="review-form">
       <h1 className="header">Leave a Review</h1>
-      <div className="form-container">
+      <div>
         <SelectedSchoolContext.Provider
           value={{ selectedSchool, setSelectedSchool }}
         >
@@ -47,70 +47,74 @@ const ReviewForm = () => {
         </SelectedSchoolContext.Provider>
 
         <form onSubmit={submitHandler}>
-          <div>
+          <div className="school-form-container shadow-and-border">
             <h1 className="form-title">Create a Review</h1>
+            <div>
+              <h5>Facility</h5>
 
-            <h5>Facility</h5>
+              <select
+                value={facility}
+                name="facility"
+                onChange={(e) => setFacility(e.target.value)}
+              >
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
 
-            <select
-              value={facility}
-              name="facility"
-              onChange={(e) => setFacility(e.target.value)}
-            >
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
+              <h5>Staff</h5>
 
-            <h5>Staff</h5>
+              <select
+                value={staff}
+                name="staff"
+                onChange={(e) => setStaff(e.target.value)}
+              >
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
 
-            <select
-              value={staff}
-              name="staff"
-              onChange={(e) => setStaff(e.target.value)}
-            >
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
+              <h5>Services</h5>
 
-            <h5>Services</h5>
+              <select
+                value={services}
+                name="services"
+                onChange={(e) => setServices(e.target.value)}
+              >
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <h5>Comment</h5>
 
-            <select
-              value={services}
-              name="services"
-              onChange={(e) => setServices(e.target.value)}
-            >
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <h5>COMMENT</h5>
+            <div className="school-form-container">
+              <input
+                className="comment"
+                value={comment}
+                name="comment"
+                placeholder="Insert a comment"
+                onChange={(e) => setComment(e.target.value)}
+                type="text"
+              />
 
-            <input
-              value={comment}
-              name="comment"
-              placeholder="Insert a comment"
-              onChange={(e) => setComment(e.target.value)}
-              type="text"
-            />
-
-            <button type="submit" disabled={!facility || !staff || !services}>
-              Create Review
-            </button>
+              <button type="submit" disabled={!facility || !staff || !services}>
+                Create Review
+              </button>
+            </div>
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

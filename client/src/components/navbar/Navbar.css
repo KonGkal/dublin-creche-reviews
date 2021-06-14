@@ -1,7 +1,7 @@
 .nav-bar-routes {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
   box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.54);
 }
 

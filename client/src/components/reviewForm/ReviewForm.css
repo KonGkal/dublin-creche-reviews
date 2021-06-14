@@ -3,4 +3,25 @@
   flex-direction: column;
   text-align: center;
   justify-content: center;
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.54);
+}
+
+.form-container button {
+  margin: 0.5em 0;
+}
+
+.comment {
+  width: 15em;
+  height: 3em;
+}
+
+.school-form-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.review-form div {
+  margin-bottom: 1em;
 }

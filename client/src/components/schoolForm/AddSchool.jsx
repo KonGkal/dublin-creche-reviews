@@ -19,7 +19,7 @@ const AddSchool = () => {
   };
   return (
     <form onSubmit={addSchoolSubmitHandler}>
-      <div>
+      <div className="school-form-container shadow-and-border">
         <h3>School Name</h3>
         <input
           value={name || ""}

@@ -14,14 +14,16 @@ const PickSchool = () => {
   ));
 
   return (
-    <select
-      value={selectedSchool}
-      name="selectedSchool"
-      onChange={(e) => setSelectedSchool(e.target.value)}
-    >
-      <option value="0">Select a School</option>
-      {schoolList}
-    </select>
+    <div className="school-form-container shadow-and-border pick-school-container">
+      <select
+        value={selectedSchool}
+        name="selectedSchool"
+        onChange={(e) => setSelectedSchool(e.target.value)}
+      >
+        <option value="0">Select a School</option>
+        {schoolList}
+      </select>
+    </div>
   );
 };
 

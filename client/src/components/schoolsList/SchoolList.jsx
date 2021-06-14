@@ -17,7 +17,7 @@ const SchoolList = () => {
   return (
     <>
       <h1 className="header">Schools</h1>
-      <div className="school-list">
+      <div className="school-list shadow-and-border">
         <ul>{schoolList}</ul>
       </div>
     </>

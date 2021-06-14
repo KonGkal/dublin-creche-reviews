@@ -1,13 +1,4 @@
 .school-list {
-  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.54);
-  border: 2px solid black;
-  border-radius: 0.2em;
   width: 18em;
   padding: 1em;
-}
-
-.school-list ul li {
-  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.54);
-  border: 2px solid black;
-  border-radius: 0.2em;
 }
