@@ -3,7 +3,6 @@ import ListedReview from "../listedReview/ListedReview";
 import { getSchoolReviews } from "../../services/apiService";
 import { useParams } from "react-router-dom";
 import ReviewsContext from "../../context/ReviewsContext";
-import "./ReviewsList.css";
 
 const ReviewsList = () => {
   const { reviews, setReviews } = useContext(ReviewsContext);
