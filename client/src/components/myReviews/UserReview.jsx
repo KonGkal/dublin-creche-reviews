@@ -1,7 +1,15 @@
 import { deleteReview } from "../../services/apiService";
+import SchoolsContext from "../../context/SchoolsContext";
+import { useContext } from "react";
 
 const UserReview = ({ review, setUserReviews }) => {
-  const { id, facility, staff, overall, services, comment } = review;
+  const { id, facility, staff, overall, services, comment, SchoolId } = review;
+  const { schools } = useContext(SchoolsContext);
+
+  let schoolName;
+  if (schools) {
+    schoolName = schools.filter((school) => school.id === SchoolId);
+  }
 
   const deleteReviewHandler = async () => {
     await deleteReview(id);
@@ -9,6 +17,9 @@ const UserReview = ({ review, setUserReviews }) => {
   };
   return (
     <li className="listed-reviews shadow-and-border">
+      <div>
+        <b>SchoolName:</b> {schoolName.length && schoolName[0].name}
+      </div>
       <div>
         <b>Overall User Rating:</b> {overall}
       </div>
