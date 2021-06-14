@@ -34,7 +34,7 @@ const MyReviews = () => {
   return (
     <>
       <h1 className="header">My Reviews</h1>
-      <div>
+      <div className="school-list shadow-and-border">
         <ul>{listOfUserReviews}</ul>
       </div>
     </>

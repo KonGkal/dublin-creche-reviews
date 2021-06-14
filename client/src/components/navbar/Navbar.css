@@ -1,8 +1,8 @@
 .nav-bar-routes {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap-reverse;
   box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.54);
+  margin-bottom: 1em;
 }
 
 ul {
@@ -31,4 +31,12 @@ a {
 
 .main-nav-item {
   margin-right: 1em;
+}
+
+@media screen and (max-width: 435px) {
+  .nav-bar-routes {
+    justify-content: center;
+    flex-wrap: wrap;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.54);
+  }
 }

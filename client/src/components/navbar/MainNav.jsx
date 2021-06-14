@@ -7,7 +7,7 @@ const MainNav = () => {
   const { isAuthenticated } = useAuth0();
 
   return (
-    <div>
+    <div className="button-container">
       <ul className="container nav-bar">
         <li className="main-nav-item">
           <Link to="/">Home</Link>

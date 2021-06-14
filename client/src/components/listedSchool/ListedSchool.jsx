@@ -5,8 +5,12 @@ const ListedSchool = ({ school }) => {
 
   return (
     <li className="listed-school shadow-and-border">
-      <div>School Name: {name} </div>
-      <div>Address: {address} </div>
+      <div>
+        <b>School Name:</b> {name}{" "}
+      </div>
+      <div>
+        <b>Address:</b> {address}{" "}
+      </div>
     </li>
   );
 };

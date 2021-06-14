@@ -3,6 +3,7 @@ import ListedReview from "../listedReview/ListedReview";
 import { getSchoolReviews } from "../../services/apiService";
 import { useParams } from "react-router-dom";
 import ReviewsContext from "../../context/ReviewsContext";
+import "./ReviewsList.css";
 
 const ReviewsList = () => {
   const { reviews, setReviews } = useContext(ReviewsContext);
@@ -27,7 +28,7 @@ const ReviewsList = () => {
   }
 
   return (
-    <>
+    <div className="school-list shadow-and-border">
       <h1 className="header">Reviews</h1>
       {rating ? (
         <h1>Overall School Rating: {(rating / reviews.length).toFixed(1)} </h1>
@@ -37,7 +38,7 @@ const ReviewsList = () => {
       <div>
         <ul>{listOfReviews}</ul>
       </div>
-    </>
+    </div>
   );
 };
 

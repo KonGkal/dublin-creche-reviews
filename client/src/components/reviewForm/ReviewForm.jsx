@@ -49,7 +49,7 @@ const ReviewForm = () => {
         <form onSubmit={submitHandler}>
           <div className="school-form-container shadow-and-border">
             <h1 className="form-title">Create a Review</h1>
-            <div>
+            <div className="school-form-container">
               <h5>Facility</h5>
 
               <select
