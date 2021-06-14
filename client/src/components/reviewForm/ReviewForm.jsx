@@ -15,7 +15,7 @@ const ReviewForm = () => {
   const [facility, setFacility] = useState("");
   const [staff, setStaff] = useState("");
   const [services, setServices] = useState("");
-  const [comment, setComment] = useState("No Comment");
+  const [comment, setComment] = useState("");
 
   const submitHandler = async (event) => {
     event.preventDefault();

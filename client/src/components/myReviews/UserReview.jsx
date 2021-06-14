@@ -37,7 +37,13 @@ const UserReview = ({ review, setUserReviews }) => {
         {comment}
       </div>
       <div className="button-container">
-        <button className="delete-button" onClick={deleteReviewHandler}>
+        <button
+          className="delete-button"
+          onClick={() => {
+            if (window.confirm("Are you sure you wish to delete this item?"))
+              deleteReviewHandler();
+          }}
+        >
           <span>❌</span>
         </button>
       </div>
