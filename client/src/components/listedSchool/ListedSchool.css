@@ -1,3 +1,7 @@
 .listed-school {
   margin-bottom: 1em;
 }
+
+.listed-school:hover {
+  font-weight: bold;
+}

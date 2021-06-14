@@ -28,12 +28,11 @@ const ReviewsList = () => {
 
   return (
     <>
+      <h1 className="header">Reviews</h1>
       {rating ? (
-        <h1 className="header">
-          School rating {(rating / reviews.length).toFixed(1)}{" "}
-        </h1>
+        <h1>Overall School Rating: {(rating / reviews.length).toFixed(1)} </h1>
       ) : (
-        <h1 className="header">School rating</h1>
+        <p>There are no current reviews.</p>
       )}
       <div>
         <ul>{listOfReviews}</ul>

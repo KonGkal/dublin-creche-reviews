@@ -17,7 +17,7 @@ const SchoolList = () => {
   return (
     <>
       <h1 className="header">Schools</h1>
-      <div>
+      <div className="school-list">
         <ul>{schoolList}</ul>
       </div>
     </>
