@@ -15,10 +15,9 @@ body {
   display: flex;
   justify-content: center;
 }
-.header {
+.main-header {
   border: 1px solid grey;
   padding-bottom: 0.3em;
-
   box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.54);
   text-align: center;
   font-size: 35px;
@@ -41,16 +40,14 @@ button:hover {
   opacity: 1;
 }
 
-path {
-  fill: transparent;
-}
-
-text {
-  font-size: 3em;
-}
-
 footer {
   margin-top: 1em;
   text-align: center;
   font-size: 0.8em;
+}
+
+.header {
+  text-align: center;
+  font-size: 2em;
+  font-weight: 500;
 }

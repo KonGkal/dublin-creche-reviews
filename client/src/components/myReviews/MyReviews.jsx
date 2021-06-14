@@ -32,9 +32,12 @@ const MyReviews = () => {
   }
 
   return (
-    <div>
-      <ul>{listOfUserReviews}</ul>
-    </div>
+    <>
+      <h1 className="header">My Reviews</h1>
+      <div>
+        <ul>{listOfUserReviews}</ul>
+      </div>
+    </>
   );
 };
 

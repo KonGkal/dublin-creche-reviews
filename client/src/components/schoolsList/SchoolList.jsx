@@ -15,9 +15,12 @@ const SchoolList = () => {
   ));
 
   return (
-    <div>
-      <ul>{schoolList}</ul>
-    </div>
+    <>
+      <h1 className="header">Schools</h1>
+      <div>
+        <ul>{schoolList}</ul>
+      </div>
+    </>
   );
 };
 

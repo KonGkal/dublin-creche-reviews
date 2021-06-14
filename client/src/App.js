@@ -26,7 +26,7 @@ function App() {
   return (
     <>
       <div>
-        <h1 className="header">Dublin Creche Reviews</h1>
+        <h1 className="main-header">Dublin Creche Reviews</h1>
       </div>
       <Navbar />
       <div className="container">

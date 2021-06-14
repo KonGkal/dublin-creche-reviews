@@ -27,15 +27,18 @@ const ReviewsList = () => {
   }
 
   return (
-    <div>
+    <>
       {rating ? (
-        <h3>School rating {(rating / reviews.length).toFixed(1)} </h3>
+        <h1 className="header">
+          School rating {(rating / reviews.length).toFixed(1)}{" "}
+        </h1>
       ) : (
-        <h3>School rating</h3>
+        <h1 className="header">School rating</h1>
       )}
-
-      <ul>{listOfReviews}</ul>
-    </div>
+      <div>
+        <ul>{listOfReviews}</ul>
+      </div>
+    </>
   );
 };
 

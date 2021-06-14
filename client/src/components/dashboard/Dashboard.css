@@ -1,13 +1,3 @@
-.school-list-header {
-  text-align: center;
-  font-size: 2em;
-  font-weight: 500;
-}
-
-/* .icon {
-  
-} */
-
 .dashboard-container {
   display: flex;
   flex-direction: column;
