@@ -20,6 +20,7 @@ a {
 .nav-bar {
   padding-top: 0.3em;
   padding-left: 2em;
+  flex-wrap: wrap;
 }
 
 .auth-nav-bar {
