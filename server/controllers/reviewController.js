@@ -1,56 +1,11 @@
 /* eslint-disable no-console */
 const db = require("../models/index");
 
-const getAllUsers = async (req, res) => {
-  try {
-    const users = await db.User.findAll();
-    res.json(users).status(200);
-  } catch (error) {
-    console.log(error);
-    res.status(500);
-  }
-};
-
-// DELETE WHEN FRONTEND IS FIXED
 const getUserReviews = async (req, res) => {
   try {
     const { UserId } = req.body;
     const reviews = await db.Review.findAll({ where: { UserId } });
     res.json(reviews).status(200);
-  } catch (error) {
-    console.log(error);
-    res.status(500);
-  }
-};
-
-const getAllSchools = async (req, res) => {
-  try {
-    const schools = await db.School.findAll();
-    res.json(schools).status(200);
-  } catch (error) {
-    console.log(error);
-    res.status(500);
-  }
-};
-
-const createUser = async (req, res) => {
-  try {
-    const { email } = req.body;
-    const newUser = await db.User.create({ email });
-    res.json(newUser).status(201);
-  } catch (error) {
-    console.log(error);
-    res.status(500);
-  }
-};
-
-const createSchool = async (req, res) => {
-  try {
-    const { name, address } = req.body;
-    const newSchool = await db.School.findOrCreate({
-      where: { name, address },
-    });
-    res.json(newSchool).status(201);
   } catch (error) {
     console.log(error);
     res.status(500);
@@ -99,17 +54,6 @@ const getSchoolReviews = async (req, res) => {
   }
 };
 
-const getUser = async (req, res) => {
-  try {
-    const { email } = req.body;
-    const user = await db.User.findAll({ where: { email } });
-    res.json(user).status(200);
-  } catch (error) {
-    console.log(error);
-    res.status(500);
-  }
-};
-
 const deleteReview = async (req, res) => {
   try {
     const { id } = req.params;
@@ -123,12 +67,7 @@ const deleteReview = async (req, res) => {
 
 module.exports = {
   getUserReviews,
-  getAllUsers,
-  getAllSchools,
-  createUser,
-  createSchool,
   createReviewOrUpdate,
   getSchoolReviews,
   deleteReview,
-  getUser,
 };
