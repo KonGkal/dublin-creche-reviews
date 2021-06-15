@@ -31,7 +31,7 @@ const ReviewsList = () => {
       <h1 className="header">Reviews</h1>
       <div className="school-list shadow-and-border">
         {rating ? (
-          <h1>
+          <h1 className="listed-reviews-header">
             Overall School Rating: {(rating / reviews.length).toFixed(1)}{" "}
           </h1>
         ) : (

@@ -67,6 +67,10 @@ footer {
   align-self: center;
 }
 
+.listed-reviews-header {
+  text-align: center;
+}
+
 @media screen and (max-width: 435px) {
   .school-list {
     width: 17.8em;
