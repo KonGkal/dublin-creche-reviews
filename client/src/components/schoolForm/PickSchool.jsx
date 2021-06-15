@@ -8,19 +8,22 @@ const PickSchool = () => {
   );
   const { schools } = useContext(SchoolsContext);
   const schoolList = schools.map((school) => (
-    <option key={school.id} value={school.id}>
+    <option className="search-bar" key={school.id} value={school.id}>
       {school.name}
     </option>
   ));
 
   return (
-    <div className="school-form-container shadow-and-border pick-school-container">
+    <div className="pick-school-container">
       <select
+        className="search-bar"
         value={selectedSchool}
         name="selectedSchool"
         onChange={(e) => setSelectedSchool(e.target.value)}
       >
-        <option value="0">Select a School</option>
+        <option style={{ overflow: "hidden" }} value="0">
+          Select a School
+        </option>
         {schoolList}
       </select>
     </div>

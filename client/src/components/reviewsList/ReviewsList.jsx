@@ -27,17 +27,21 @@ const ReviewsList = () => {
   }
 
   return (
-    <div className="school-list shadow-and-border">
+    <>
       <h1 className="header">Reviews</h1>
-      {rating ? (
-        <h1>Overall School Rating: {(rating / reviews.length).toFixed(1)} </h1>
-      ) : (
-        <p>There are no current reviews.</p>
-      )}
-      <div>
-        <ul>{listOfReviews}</ul>
+      <div className="school-list shadow-and-border">
+        {rating ? (
+          <h1>
+            Overall School Rating: {(rating / reviews.length).toFixed(1)}{" "}
+          </h1>
+        ) : (
+          <p>There are no current reviews.</p>
+        )}
+        <div>
+          <ul>{listOfReviews}</ul>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

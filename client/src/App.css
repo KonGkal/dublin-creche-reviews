@@ -64,3 +64,15 @@ footer {
 .school-list {
   padding: 1em;
 }
+
+/* select {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+option {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+} */

@@ -10,24 +10,24 @@ import PlacesAutocomplete, {
 const AddSchool = () => {
   const { setSchools } = useContext(SchoolsContext);
   const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
+  // const [address, setAddress] = useState("");
   const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
 
   const addSchoolSubmitHandler = async (event) => {
     event.preventDefault();
 
-    const newSchool = await addSchool(name, address);
+    const newSchool = await addSchool(name, coordinates.lat, coordinates.lng);
     setSchools((prev) => [...prev, newSchool[0]]);
 
     setName("");
-    setAddress("");
+    // setAddress("");
   };
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
     setCoordinates(latLng);
-    setAddress(value);
+    setName(value);
   };
 
   return (
@@ -36,8 +36,8 @@ const AddSchool = () => {
         <h3>Search with google places</h3>
         <div>
           <PlacesAutocomplete
-            value={address}
-            onChange={setAddress}
+            value={name}
+            onChange={setName}
             onSelect={handleSelect}
           >
             {({
@@ -46,12 +46,13 @@ const AddSchool = () => {
               getSuggestionItemProps,
               loading,
             }) => (
-              <div>
+              <div className="search-bar">
                 <input
+                  className="search-bar"
                   {...getInputProps({ placeholder: "Search School..." })}
                 />
 
-                <div>
+                <div className="search-bar">
                   {loading ? <div>Loading...</div> : null}
                   {suggestions.map((suggestion) => {
                     const style = {
@@ -72,21 +73,21 @@ const AddSchool = () => {
             )}
           </PlacesAutocomplete>
         </div>
-        <h3>School Name</h3>
+        {/* <h3>School Name</h3>
         <input
           value={name || ""}
           placeholder="Add schools name"
           onChange={(e) => setName(e.target.value)}
           type="text"
-        />
-        <h3>School Address</h3>
+        /> */}
+        {/* <h3>School Address</h3> */}
         {/* <input
           value={address || ""}
           placeholder="Add schools address"
           onChange={(e) => setAddress(e.target.value)}
           type="text"
         /> */}
-        <button type="submit" disabled={!name || !address}>
+        <button type="submit" disabled={!name}>
           Add School
         </button>
       </div>

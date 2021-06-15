@@ -53,11 +53,11 @@ export const getSchoolReviews = async (SChoolId) => {
   }
 };
 
-export const addSchool = async (name, address) => {
+export const addSchool = async (name, lat, lng) => {
   try {
     const res = await fetch(`${baseUrl}/createSchool`, {
       method: "POST",
-      body: JSON.stringify({ name, address }),
+      body: JSON.stringify({ name, lat, lng }),
       headers: {
         "Content-Type": "application/json",
       },

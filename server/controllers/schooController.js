@@ -13,9 +13,9 @@ const getAllSchools = async (req, res) => {
 
 const createSchool = async (req, res) => {
   try {
-    const { name, address } = req.body;
+    const { name, lat, lng } = req.body;
     const newSchool = await db.School.findOrCreate({
-      where: { name, address },
+      where: { name, lat, lng },
     });
     res.json(newSchool).status(201);
   } catch (error) {

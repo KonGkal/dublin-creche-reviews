@@ -35,7 +35,10 @@ const MyReviews = () => {
     <>
       <h1 className="header">My Reviews</h1>
       <div className="school-list shadow-and-border">
-        <ul>{listOfUserReviews}</ul>
+        {userReviews.length ? null : <p>There are no current reviews.</p>}
+        <div>
+          <ul>{listOfUserReviews}</ul>
+        </div>
       </div>
     </>
   );
