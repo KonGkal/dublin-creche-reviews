@@ -71,20 +71,12 @@ footer {
   text-align: center;
 }
 
+.map {
+  margin-top: 1em;
+}
+
 @media screen and (max-width: 435px) {
   .school-list {
     width: 17.8em;
   }
 }
-
-/* select {
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-option {
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal;
-} */

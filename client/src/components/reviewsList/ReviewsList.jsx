@@ -1,17 +1,43 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import ListedReview from "../listedReview/ListedReview";
-import { getSchoolReviews } from "../../services/apiService";
+import { getSchoolReviews, getSchool } from "../../services/apiService";
 import { useParams } from "react-router-dom";
 import ReviewsContext from "../../context/ReviewsContext";
+import { GoogleMap } from "@react-google-maps/api";
+import SchoolsContext from "../../context/SchoolsContext";
 
 const ReviewsList = () => {
+  const [schoolDetails, setSchoolDetails] = useState([]);
   const { reviews, setReviews } = useContext(ReviewsContext);
+  const { schools } = useContext(SchoolsContext);
 
   const { schoolId } = useParams();
+  // if (schools) {
+  //     schools.filter((school) => school["id"] == schoolId)
+  // }
+
+  const location = schools.filter((school) => school["id"] === schoolId);
+
+  console.log(location);
+
+  if (schoolDetails) console.log(typeof schoolDetails.lat);
+
+  const mapContainerStyle = {
+    width: "18em",
+    height: "18em",
+  };
+
+  const center = {
+    lat: +schoolDetails.lat,
+    lng: +schoolDetails.lng,
+  };
 
   useEffect(() => {
     getSchoolReviews(schoolId).then((schoolReviews) => {
       setReviews(schoolReviews);
+    });
+    getSchool(schoolId).then((school) => {
+      setSchoolDetails(school);
     });
   }, [schoolId, setReviews]);
 
@@ -40,6 +66,13 @@ const ReviewsList = () => {
         <div>
           <ul>{listOfReviews}</ul>
         </div>
+      </div>
+      <div className="map shadow-and-border">
+        <GoogleMap
+          mapContainerStyle={mapContainerStyle}
+          zoom={12}
+          center={center}
+        ></GoogleMap>
       </div>
     </>
   );

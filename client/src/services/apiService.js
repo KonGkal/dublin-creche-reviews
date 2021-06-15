@@ -9,6 +9,21 @@ export const getSchools = async () => {
   }
 };
 
+export const getSchool = async (id) => {
+  try {
+    const res = await fetch(`${baseUrl}/school`, {
+      method: "POST",
+      body: JSON.stringify({ id }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return await res.json();
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 export const addNewUser = async (email) => {
   try {
     const res = await fetch(`${baseUrl}/createUser`, {

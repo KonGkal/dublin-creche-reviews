@@ -11,6 +11,19 @@ const getAllSchools = async (req, res) => {
   }
 };
 
+const getSchool = async (req, res) => {
+  try {
+    const { id } = req.body;
+    const school = await db.School.findOne({
+      where: { id },
+    });
+    res.json(school).status(200);
+  } catch (error) {
+    console.log(error);
+    res.status(500);
+  }
+};
+
 const createSchool = async (req, res) => {
   try {
     const { name, lat, lng } = req.body;
@@ -26,5 +39,6 @@ const createSchool = async (req, res) => {
 
 module.exports = {
   getAllSchools,
+  getSchool,
   createSchool,
 };
