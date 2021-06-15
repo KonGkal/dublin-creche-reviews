@@ -3,7 +3,7 @@ import ListedReview from "../listedReview/ListedReview";
 import { getSchoolReviews, getSchool } from "../../services/apiService";
 import { useParams } from "react-router-dom";
 import ReviewsContext from "../../context/ReviewsContext";
-import { GoogleMap } from "@react-google-maps/api";
+import { GoogleMap, Marker } from "@react-google-maps/api";
 
 const ReviewsList = () => {
   const [schoolDetails, setSchoolDetails] = useState([]);
@@ -19,6 +19,10 @@ const ReviewsList = () => {
   const center = {
     lat: schoolDetails.lat || 53.3498053,
     lng: schoolDetails.lng || -6.2603097,
+  };
+  const options = {
+    disableDefaultUI: true,
+    zoomControl: true,
   };
 
   useEffect(() => {
@@ -49,9 +53,12 @@ const ReviewsList = () => {
         <div className="map shadow-and-border">
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
-            zoom={14}
+            zoom={12}
             center={center}
-          ></GoogleMap>
+            options={options}
+          >
+            <Marker position={center} />
+          </GoogleMap>
         </div>
 
         {rating ? (

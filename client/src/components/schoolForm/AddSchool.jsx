@@ -28,6 +28,12 @@ const AddSchool = () => {
     setName(value);
   };
 
+  const searchOptions = {
+    types: ["establishment"],
+    location: { lat: () => 53.3498053, lng: () => -6.2603097 },
+    radius: 20000,
+  };
+
   return (
     <form onSubmit={addSchoolSubmitHandler}>
       <div className="school-form-container">
@@ -37,6 +43,7 @@ const AddSchool = () => {
             value={name}
             onChange={setName}
             onSelect={handleSelect}
+            searchOptions={searchOptions}
           >
             {({
               getInputProps,
