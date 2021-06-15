@@ -37,9 +37,9 @@ const ReviewForm = () => {
   };
 
   return (
-    <div className="review-form">
+    <>
       <h1 className="header">Leave a Review</h1>
-      <div>
+      <div className="school-list review-form shadow-and-border">
         <SelectedSchoolContext.Provider
           value={{ selectedSchool, setSelectedSchool }}
         >
@@ -114,7 +114,7 @@ const ReviewForm = () => {
           </div>
         </form>
       </div>
-    </div>
+    </>
   );
 };
 
