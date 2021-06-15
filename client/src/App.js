@@ -12,9 +12,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 function App() {
   const [schools, setSchools] = useState([]);
 
-  const {} = useLoadScript({
+  const libraries = ["places"];
+
+  const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
-    libraries: ["places"],
+    libraries,
   });
 
   useEffect(() => {
@@ -24,11 +26,12 @@ function App() {
   }, []);
 
   const { isLoading } = useAuth0();
-
   if (isLoading) {
     return <Loading />;
   }
 
+  if (loadError) return "Error loading Maps";
+  if (!isLoaded) return "Loading Maps";
   return (
     <>
       <div>

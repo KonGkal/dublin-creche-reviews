@@ -11,6 +11,7 @@ const AddSchool = () => {
   const { setSchools } = useContext(SchoolsContext);
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
+  const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
 
   const addSchoolSubmitHandler = async (event) => {
     event.preventDefault();
@@ -22,7 +23,10 @@ const AddSchool = () => {
     setAddress("");
   };
 
-  const handleSelect = async (value) => {};
+  const handleSelect = async (value) => {
+    const results = await geocodeByAddress(value);
+    console.log(results);
+  };
 
   return (
     <form onSubmit={addSchoolSubmitHandler}>
@@ -34,7 +38,33 @@ const AddSchool = () => {
             onChange={setAddress}
             onSelect={handleSelect}
           >
-            {() => <div>HEEY</div>}
+            {({
+              getInputProps,
+              suggestions,
+              getSuggestionItemProps,
+              loading,
+            }) => (
+              <div>
+                <input
+                  {...getInputProps({ placeholder: "Search School..." })}
+                />
+
+                <div>
+                  {loading ? <div>Loading...</div> : null}
+                  {suggestions.map((suggestion) => {
+                    const style = {
+                      backgroundColor: suggestion.active ? "#00c9ff" : "#fff",
+                    };
+
+                    return (
+                      <div {...getSuggestionItemProps(suggestion, { style })}>
+                        {suggestion.description}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </PlacesAutocomplete>
         </div>
         <h3>School Name</h3>
