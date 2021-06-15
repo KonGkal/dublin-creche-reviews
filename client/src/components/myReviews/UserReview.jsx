@@ -16,7 +16,7 @@ const UserReview = ({ review, setUserReviews }) => {
     setUserReviews((prev) => prev.filter((review) => review.id !== id));
   };
   return (
-    <li className="listed-reviews shadow-and-border">
+    <li className="listed-school listed-reviews shadow-and-border">
       <div>
         <b>SchoolName:</b> {schoolName.length && schoolName[0].name}
       </div>

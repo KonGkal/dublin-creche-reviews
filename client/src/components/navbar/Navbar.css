@@ -37,4 +37,7 @@ a {
     flex-wrap: wrap;
     box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.54);
   }
+  .school-list {
+    width: 17.8em;
+  }
 }

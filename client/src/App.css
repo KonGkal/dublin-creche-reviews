@@ -63,7 +63,14 @@ footer {
 
 .school-list {
   padding: 1em;
-  width: 20em;
+  width: 22em;
+  align-self: center;
+}
+
+@media screen and (max-width: 435px) {
+  .school-list {
+    width: 17.8em;
+  }
 }
 
 /* select {
