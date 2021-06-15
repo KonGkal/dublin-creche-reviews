@@ -4,12 +4,18 @@ import Navbar from "./components/navbar/Navbar";
 import Dashboard from "./components/dashboard/Dashboard";
 import Loading from "./components/loading/Loading";
 import SchoolsContext from "./context/SchoolsContext";
+import { useLoadScript } from "@react-google-maps/api";
 import "./App.css";
 
 import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
   const [schools, setSchools] = useState([]);
+
+  const {} = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
+    libraries: ["places"],
+  });
 
   useEffect(() => {
     getSchools().then((schools) => {

@@ -2,6 +2,10 @@ import { useState } from "react";
 import { addSchool } from "../../services/apiService";
 import { useContext } from "react";
 import SchoolsContext from "../../context/SchoolsContext";
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from "react-places-autocomplete";
 
 const AddSchool = () => {
   const { setSchools } = useContext(SchoolsContext);
@@ -17,9 +21,22 @@ const AddSchool = () => {
     setName("");
     setAddress("");
   };
+
+  const handleSelect = async (value) => {};
+
   return (
     <form onSubmit={addSchoolSubmitHandler}>
       <div className="school-form-container">
+        <h3>Search with google places</h3>
+        <div>
+          <PlacesAutocomplete
+            value={address}
+            onChange={setAddress}
+            onSelect={handleSelect}
+          >
+            {() => <div>HEEY</div>}
+          </PlacesAutocomplete>
+        </div>
         <h3>School Name</h3>
         <input
           value={name || ""}
