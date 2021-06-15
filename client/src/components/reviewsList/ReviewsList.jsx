@@ -4,32 +4,21 @@ import { getSchoolReviews, getSchool } from "../../services/apiService";
 import { useParams } from "react-router-dom";
 import ReviewsContext from "../../context/ReviewsContext";
 import { GoogleMap } from "@react-google-maps/api";
-import SchoolsContext from "../../context/SchoolsContext";
 
 const ReviewsList = () => {
   const [schoolDetails, setSchoolDetails] = useState([]);
   const { reviews, setReviews } = useContext(ReviewsContext);
-  const { schools } = useContext(SchoolsContext);
 
   const { schoolId } = useParams();
-  // if (schools) {
-  //     schools.filter((school) => school["id"] == schoolId)
-  // }
-
-  const location = schools.filter((school) => school["id"] === schoolId);
-
-  console.log(location);
-
-  if (schoolDetails) console.log(typeof schoolDetails.lat);
 
   const mapContainerStyle = {
-    width: "18em",
-    height: "18em",
+    width: "15em",
+    height: "15em",
   };
 
   const center = {
-    lat: +schoolDetails.lat,
-    lng: +schoolDetails.lng,
+    lat: schoolDetails.lat || 53.3498053,
+    lng: schoolDetails.lng || -6.2603097,
   };
 
   useEffect(() => {
@@ -56,23 +45,27 @@ const ReviewsList = () => {
     <>
       <h1 className="header">Reviews</h1>
       <div className="school-list shadow-and-border">
+        <h1 className="listed-reviews-header">{schoolDetails.name}</h1>
+        <div className="map shadow-and-border">
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            zoom={12}
+            center={center}
+          ></GoogleMap>
+        </div>
+
         {rating ? (
-          <h1 className="listed-reviews-header">
-            Overall School Rating: {(rating / reviews.length).toFixed(1)}{" "}
-          </h1>
+          <div className="shadow-and-border">
+            <h1 className="listed-reviews-rating-header">
+              Overall School Rating: {(rating / reviews.length).toFixed(1)}{" "}
+            </h1>
+          </div>
         ) : (
           <p>There are no current reviews.</p>
         )}
         <div>
           <ul>{listOfReviews}</ul>
         </div>
-      </div>
-      <div className="map shadow-and-border">
-        <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          zoom={12}
-          center={center}
-        ></GoogleMap>
       </div>
     </>
   );
