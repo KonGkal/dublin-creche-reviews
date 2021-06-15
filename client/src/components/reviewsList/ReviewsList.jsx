@@ -68,7 +68,9 @@ const ReviewsList = () => {
             </h1>
           </div>
         ) : (
-          <p>There are no current reviews.</p>
+          <p className="listed-reviews-rating-header">
+            There are no current reviews.
+          </p>
         )}
         <div>
           <ul>{listOfReviews}</ul>
