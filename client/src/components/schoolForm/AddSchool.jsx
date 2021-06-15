@@ -25,7 +25,9 @@ const AddSchool = () => {
 
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
-    console.log(results);
+    const latLng = await getLatLng(results[0]);
+    setCoordinates(latLng);
+    setAddress(value);
   };
 
   return (
@@ -57,7 +59,10 @@ const AddSchool = () => {
                     };
 
                     return (
-                      <div {...getSuggestionItemProps(suggestion, { style })}>
+                      <div
+                        key={suggestion.place_id}
+                        {...getSuggestionItemProps(suggestion, { style })}
+                      >
                         {suggestion.description}
                       </div>
                     );
@@ -75,12 +80,12 @@ const AddSchool = () => {
           type="text"
         />
         <h3>School Address</h3>
-        <input
+        {/* <input
           value={address || ""}
           placeholder="Add schools address"
           onChange={(e) => setAddress(e.target.value)}
           type="text"
-        />
+        /> */}
         <button type="submit" disabled={!name || !address}>
           Add School
         </button>

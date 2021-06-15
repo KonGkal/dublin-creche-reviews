@@ -4,10 +4,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING,
     },
-    address: {
+    lat: {
       allowNull: false,
-      type: DataTypes.STRING,
-      unique: true,
+      type: DataTypes.FLOAT,
+    },
+    lng: {
+      allowNull: false,
+      type: DataTypes.FLOAT,
     },
   });
 
