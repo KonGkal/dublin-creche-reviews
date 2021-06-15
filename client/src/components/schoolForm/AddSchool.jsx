@@ -37,7 +37,6 @@ const AddSchool = () => {
   return (
     <form onSubmit={addSchoolSubmitHandler}>
       <div className="school-form-container">
-        <h3>Search with google places</h3>
         <div>
           <PlacesAutocomplete
             value={name}
