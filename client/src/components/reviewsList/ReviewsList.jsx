@@ -49,13 +49,13 @@ const ReviewsList = () => {
         <div className="map shadow-and-border">
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
-            zoom={12}
+            zoom={14}
             center={center}
           ></GoogleMap>
         </div>
 
         {rating ? (
-          <div className="shadow-and-border">
+          <div className="rating-header-container shadow-and-border">
             <h1 className="listed-reviews-rating-header">
               Overall School Rating: {(rating / reviews.length).toFixed(1)}{" "}
             </h1>

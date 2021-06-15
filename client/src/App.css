@@ -83,6 +83,10 @@ footer {
   height: 15.2em;
 }
 
+.rating-header-container {
+  margin-bottom: 1em;
+}
+
 @media screen and (max-width: 435px) {
   .school-list {
     width: 17.8em;

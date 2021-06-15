@@ -9,7 +9,7 @@ const PickSchool = () => {
   const { schools } = useContext(SchoolsContext);
   const schoolList = schools.map((school) => (
     <option className="search-bar" key={school.id} value={school.id}>
-      {school.name}
+      {school.name.split(",")[0]}
     </option>
   ));
 
