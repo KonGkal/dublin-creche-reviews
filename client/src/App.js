@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { getSchools } from "./services/apiService";
+import React, { useState, useEffect, useRef } from "react";
+import { getSchool, getSchools } from "./services/apiService";
 import Navbar from "./components/navbar/Navbar";
 import Dashboard from "./components/dashboard/Dashboard";
 import Loading from "./components/loading/Loading";
@@ -19,13 +19,33 @@ function App() {
     libraries,
   });
 
+  const errorCheck = useRef(false);
+  const errorHandler = () => {
+    errorCheck.current = true;
+  };
+
   useEffect(() => {
-    getSchools().then((schools) => {
-      setSchools(schools);
-    });
+    async function school() {
+      const { data, status } = await getSchools();
+      if (status === 200) {
+        setSchools(data);
+      }
+      if (status === 500) {
+        errorHandler();
+      }
+    }
+    school();
   }, []);
 
   const { isLoading } = useAuth0();
+
+  if (errorCheck.current) {
+    return (
+      <div className="container">
+        <p>Server Error</p>
+      </div>
+    );
+  }
   if (isLoading) {
     return <Loading />;
   }

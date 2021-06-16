@@ -1,9 +1,11 @@
+import axios from "axios";
+
 const baseUrl = process.env.REACT_APP_SERVER_URL;
 
 export const getSchools = async () => {
   try {
-    const res = await fetch(`${baseUrl}/schools`);
-    return await res.json();
+    const res = await axios.get(`${baseUrl}/schools`);
+    return res;
   } catch (e) {
     console.log(e);
   }
