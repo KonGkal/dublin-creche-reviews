@@ -7,6 +7,12 @@ import PlacesAutocomplete, {
   getLatLng,
 } from "react-places-autocomplete";
 
+const searchOptions = {
+  types: ["establishment"],
+  location: { lat: () => 53.3498053, lng: () => -6.2603097 },
+  radius: 20000,
+};
+
 const AddSchool = () => {
   const { setSchools } = useContext(SchoolsContext);
   const [name, setName] = useState("");
@@ -26,12 +32,6 @@ const AddSchool = () => {
     const latLng = await getLatLng(results[0]);
     setCoordinates(latLng);
     setName(value);
-  };
-
-  const searchOptions = {
-    types: ["establishment"],
-    location: { lat: () => 53.3498053, lng: () => -6.2603097 },
-    radius: 20000,
   };
 
   return (
