@@ -34,20 +34,20 @@ Dublin Creche Reviews is an app dedicated to helping parents form an opinion abo
 # Tech stack
 
 ## Front-end
-React
+<a href="https://reactjs.org/">React</a>
 \
-Axios
+<a href="https://axios-http.com/">Axios</a>
 \
-Auth0
+<a href="https://auth0.com/">Auth0</a>
 \
-Google Maps
+ <a href="https://developers.google.com/maps">Google Maps API</a> 
 \
-Google Places Autocomplete Api
+<a href="https://developers.google.com/maps/documentation/places/web-service/autocomplete">Google Places Autocomplete API</a> 
 ## Back-end
-Express
+<a href="https://expressjs.com/">Express</a>
 \
-PostgreSQL
+<a href="https://www.postgresql.org/">PostgreSQL</a> 
 \
-Sequelize
+<a href="https://sequelize.org/">Sequelize</a> 
 \
-Auth0
+<a href="https://auth0.com/">Auth0</a>
