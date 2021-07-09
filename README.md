@@ -47,7 +47,7 @@ Google Places Autocomplete Api
 ## Back-end
 Express
 \
-PostgresSQL
+PostgreSQL
 \
 Sequelize
 \
