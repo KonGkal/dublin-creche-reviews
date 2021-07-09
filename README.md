@@ -25,8 +25,7 @@ Dublin Creche Reviews is an app dedicated to helping parents form an opinion abo
 \
   Within the folder there is an `example.env` file. Copy the variables from that file, paste them on a new `.env` file that you will create locally and fill the variables with     your local corresponding values. 
 \
-  Do the same for the `./server` holder.
-\
+  Do the same for the `./server` folder.
 ## 4. Start the app
 \
   Run the client by executing `npm run` from inside the client folder. 
