@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { getSchool, getSchools } from "./services/apiService";
+import { getSchools } from "./services/apiService";
 import Navbar from "./components/navbar/Navbar";
 import Dashboard from "./components/dashboard/Dashboard";
 import Loading from "./components/loading/Loading";
