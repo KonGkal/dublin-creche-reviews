@@ -8,7 +8,7 @@ const router = require("./router");
 const db = require("./models/index");
 
 const app = express();
-const port = process.env.EXPRESS_PORT || 3001;
+const port = process.env.PORT || 3001;
 
 app.use(helmet());
 app.use(cors());
