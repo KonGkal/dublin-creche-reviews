@@ -18,3 +18,9 @@
 .search-bar {
   width: 12.8em;
 }
+
+@media screen and (max-width: 435px) {
+  .school-form-container input {
+    margin: 0;
+  }
+}
