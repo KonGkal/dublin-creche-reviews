@@ -16,7 +16,6 @@ const PickSchool = () => {
   return (
     <div className="pick-school-container">
       <select
-        className="search-bar"
         value={selectedSchool}
         name="selectedSchool"
         onChange={(e) => setSelectedSchool(e.target.value)}

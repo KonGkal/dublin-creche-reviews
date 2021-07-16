@@ -50,7 +50,7 @@ const AddSchool = () => {
               getSuggestionItemProps,
               loading,
             }) => (
-              <div className="search-bar">
+              <div>
                 <input
                   {...getInputProps({ placeholder: "Search School..." })}
                 />

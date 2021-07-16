@@ -12,11 +12,9 @@
 }
 
 .pick-school-container {
+  display: flex;
+  justify-content: center;
   margin-bottom: 0.5em;
-}
-
-.search-bar {
-  width: 12.8em;
 }
 
 @media screen and (max-width: 500px) {
