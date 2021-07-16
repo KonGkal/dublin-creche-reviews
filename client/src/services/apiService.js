@@ -140,3 +140,16 @@ export const deleteReview = async (id) => {
     console.log(e);
   }
 };
+
+export const getUser = async (token) => {
+  try {
+  const res = await fetch(`${baseUrl}/users`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return res.json();
+    } catch (e) {
+      console.log(e);
+    }
+}

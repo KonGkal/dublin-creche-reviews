@@ -4,7 +4,7 @@ import { Route } from "react-router-dom";
 import ReviewForm from "../reviewForm/ReviewForm";
 import MyReviews from "../myReviews/MyReviews";
 import { useAuth0 } from "@auth0/auth0-react";
-import { addNewUser, findUserbyEmail } from "../../services/apiService";
+import { addNewUser, findUserbyEmail, getUser } from "../../services/apiService";
 
 const ReviewsContainer = () => {
   const [userDetails, setUserDetails] = useState([]);
@@ -14,22 +14,22 @@ const ReviewsContainer = () => {
     try {
       const token = await getAccessTokenSilently();
 
-      const res = await fetch(`http://localhost:3001/users`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      return res.json();
+      return await getUser(token);
     } catch (e) {
       console.log(e);
     }
   };
 
   const isExistingUser = (userEmail) => {
-    getAllUsers().then((res) => {
+    try {
+      getAllUsers().then((res) => {
       if (res.filter((user) => user.email === userEmail).length === 0)
         addNewUser(user.email);
     });
+    } catch (e) {
+      console.log(e);
+    }
+    
   };
   if (user) isExistingUser(user.email);
 
