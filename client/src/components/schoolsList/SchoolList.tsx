@@ -7,7 +7,7 @@ import SchoolsContext from "../../context/SchoolsContext";
 const SchoolList = () => {
   const { schools } = useContext(SchoolsContext);
 
-  const schoolList = schools.map((school) => (
+  const schoolList = schools.map((school: any) => (
     <Link key={school.id} to={`/schoolReviews/${school.id}`}>
       <ListedSchool key={school.id} school={school} />
     </Link>
