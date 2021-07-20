@@ -39,84 +39,56 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var apiService_1 = require("../../services/apiService");
+var SchoolsContext_1 = __importDefault(require("../../context/SchoolsContext"));
 var react_1 = require("react");
-var apiService_1 = require("./services/apiService");
-var Navbar_1 = __importDefault(require("./components/navbar/Navbar"));
-var api_1 = require("@react-google-maps/api");
-require("./App.css");
-var auth0_react_1 = require("@auth0/auth0-react");
-var libraries = ["places"];
-function App() {
-    var _a = react_1.useState([]), schools = _a[0], setSchools = _a[1];
-    var _b = api_1.useLoadScript({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
-        libraries: libraries,
-    }), isLoaded = _b.isLoaded, loadError = _b.loadError;
-    var errorCheck = react_1.useRef(false);
-    var errorHandler = function () {
-        errorCheck.current = true;
-    };
-    react_1.useEffect(function () {
-        function school() {
-            return __awaiter(this, void 0, void 0, function () {
-                var _a, data, status;
-                return __generator(this, function (_b) {
-                    switch (_b.label) {
-                        case 0: return [4 /*yield*/, apiService_1.getSchools()];
-                        case 1:
-                            _a = _b.sent(), data = _a.data, status = _a.status;
-                            if (status === 200) {
-                                setSchools(data);
-                            }
-                            if (status === 500) {
-                                errorHandler();
-                            }
-                            return [2 /*return*/];
-                    }
-                });
-            });
-        }
-        school();
-    }, []);
-    var isLoading = auth0_react_1.useAuth0().isLoading;
-    if (errorCheck.current) {
-        return className = "container" >
-            Server;
-        Error < /p>
-            < /div>;
-        ;
+var UserReview = function (_a) {
+    var review = _a.review, setUserReviews = _a.setUserReviews;
+    var id = review.id, facility = review.facility, staff = review.staff, overall = review.overall, services = review.services, comment = review.comment, SchoolId = review.SchoolId;
+    var schools = react_1.useContext(SchoolsContext_1.default).schools;
+    var schoolName;
+    if (schools) {
+        schoolName = schools.filter(function (school) { return school.id === SchoolId; });
     }
-    if (isLoading) {
-        return />;;
-    }
-    if (loadError)
-        return "Error loading Maps";
-    if (!isLoaded)
-        return "Loading Maps";
-    return className = "main-header" > Dublin;
-    Creche;
-    Reviews < /h1>
-        < /div>
-        < Navbar_1.default /  >
-        className;
-    "container" >
-        value;
-    {
-        {
-            schools, setSchools;
-        }
-    }
-     >
-        />
-        < /SchoolsContext.Provider>
-        < /div>
-        < footer > ;
-    KonGkal;
-    2021;
-    All;
-    rights;
-    reserved < /footer>
-        < />;
-    ;
-}
-exports.default = App;
+    var deleteReviewHandler = function () { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, apiService_1.deleteReview(id)];
+                case 1:
+                    _a.sent();
+                    setUserReviews(function (prev) { return prev.filter(function (review) { return review.id !== id; }); });
+                    return [2 /*return*/];
+            }
+        });
+    }); };
+    return (<li className="listed-reviews shadow-and-border">
+      <div>
+        <b>SchoolName:</b> {schoolName.length && schoolName[0].name}
+      </div>
+      <div>
+        <b>Overall User Rating:</b> {overall}
+      </div>
+      <div>
+        <b>Facility:</b> {facility}
+      </div>
+      <div>
+        <b>Staff:</b> {staff}
+      </div>
+      <div>
+        <b>Services:</b> {services}
+      </div>
+      <div>
+        <b>Comment:</b>
+        {comment}
+      </div>
+      <div className="button-container">
+        <button className="delete-button" onClick={function () {
+            if (window.confirm("Are you sure you wish to delete this item?"))
+                deleteReviewHandler();
+        }}>
+          <span>❌</span>
+        </button>
+      </div>
+    </li>);
+};
+exports.default = UserReview;

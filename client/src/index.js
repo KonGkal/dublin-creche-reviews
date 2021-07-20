@@ -1,17 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import { BrowserRouter as Router } from "react-router-dom";
-import Auth0ProviderWithHistory from "./auth/auth0ProviderWithHistory";
-
-ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <Auth0ProviderWithHistory>
-        <App />
-      </Auth0ProviderWithHistory>
-    </Router>
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var react_dom_1 = __importDefault(require("react-dom"));
+require("./index.css");
+react_dom_1.default.render(/>
+    < /Auth0ProviderWithHistory>
+    < /Router>
+    < /React.StrictMode>,, document.getElementById("root"));
