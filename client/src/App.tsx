@@ -10,7 +10,7 @@ import "./App.css";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
-  const [schools, setSchools] = useState([]);
+  const [schools, setSchools] = useState<School[]>([]);
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY!,

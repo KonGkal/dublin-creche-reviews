@@ -1,4 +1,4 @@
 import { createContext } from "react";
-const SchoolsContext = createContext(null);
+const SchoolsContext = createContext({});
 
 export default SchoolsContext;
