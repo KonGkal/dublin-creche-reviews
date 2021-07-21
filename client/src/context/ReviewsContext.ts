@@ -1,4 +1,9 @@
 import { createContext } from "react";
-const ReviewsContext = createContext(null);
+const ReviewsContext = createContext<ReviewState>(
+  {
+    reviews: [],
+    setReviews: () => undefined
+  }
+  );
 
 export default ReviewsContext;

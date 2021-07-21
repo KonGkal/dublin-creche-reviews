@@ -24,7 +24,7 @@ const ReviewsContainer = () => {
     try {
       getAllUsers().then((res) => {
       if (res.filter((user) => user.email === userEmail).length === 0)
-        addNewUser(user.email);
+        addNewUser(user!.email);
     });
     } catch (e) {
       console.log(e);

@@ -4,7 +4,7 @@ import UserDetailsContext from "../../context/UserDetailsContext";
 import UserReview from "./UserReview";
 
 const MyReviews = () => {
-  const { userDetails } = useContext(UserDetailsContext);
+  const [ userDetails ] = useContext(UserDetailsContext);
   const [userReviews, setUserReviews] = useState([]);
 
   useEffect(() => {
@@ -15,21 +15,15 @@ const MyReviews = () => {
     }
   }, [userDetails]);
 
-  const listOfUserReviews = [];
-
-  if (userReviews) {
-    listOfUserReviews.push(
-      userReviews.map((review) => {
-        return (
-          <UserReview
-            key={review.id}
-            review={review}
-            setUserReviews={setUserReviews}
-          />
-        );
-      })
+  const listOfUserReviews = userReviews ? userReviews.map((review: any) => {
+    return (
+      <UserReview
+        key={review.id}
+        review={review}
+        setUserReviews={setUserReviews}
+      />
     );
-  }
+  }) : null;
 
   return (
     <>

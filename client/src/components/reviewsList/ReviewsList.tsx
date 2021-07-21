@@ -38,12 +38,9 @@ const ReviewsList = () => {
     return <ListedReview key={review.id} review={review} />;
   });
 
-  let rating;
-  if (reviews.length) {
-    rating = reviews.reduce((acc, cur) => {
-      return acc + cur.overall;
-    }, 0);
-  }
+  const rating = reviews.length 
+    ? reviews.reduce((acc, cur) => {return acc + cur.overall;}, 0)
+    : null
 
   return (
     <>

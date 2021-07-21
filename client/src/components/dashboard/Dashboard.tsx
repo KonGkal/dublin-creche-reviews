@@ -11,7 +11,7 @@ const Dashboard = () => {
   const [reviews, setReviews] = useState([]);
   return (
     <div className="dashboard-container">
-      <IconSvg className="icon" alt="icon" />
+      <IconSvg className="icon" />
       <Switch>
         <Route exact path="/" component={SchoolList} />
         <ReviewsContext.Provider value={{ reviews, setReviews }}>

@@ -6,10 +6,7 @@ const UserReview = ({ review, setUserReviews }) => {
   const { id, facility, staff, overall, services, comment, SchoolId } = review;
   const { schools } = useContext(SchoolsContext);
 
-  let schoolName;
-  if (schools) {
-    schoolName = schools.filter((school) => school.id === SchoolId);
-  }
+  const schoolName = schools ? schools.filter((school) => school.id === SchoolId) : null;
 
   const deleteReviewHandler = async () => {
     await deleteReview(id);
@@ -18,7 +15,7 @@ const UserReview = ({ review, setUserReviews }) => {
   return (
     <li className="listed-reviews shadow-and-border">
       <div>
-        <b>SchoolName:</b> {schoolName.length && schoolName[0].name}
+        <b>SchoolName:</b> {schoolName?.length && schoolName[0].name}
       </div>
       <div>
         <b>Overall User Rating:</b> {overall}

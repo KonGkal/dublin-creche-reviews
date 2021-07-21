@@ -1,4 +1,9 @@
 import { createContext } from "react";
-const SelectedSchoolContext = createContext(null);
+const SelectedSchoolContext = createContext<SelectedSchoolState>({
+  selectedSchool: {
+    id: -1,
+  },
+  setSelectedSchool: () => undefined
+});
 
 export default SelectedSchoolContext;
