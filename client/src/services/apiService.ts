@@ -1,15 +1,8 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 const baseUrl = process.env.REACT_APP_SERVER_URL;
 
-export const getSchools = async () => {
-  try {
-    const res = await axios.get(`${baseUrl}/schools`);
-    return res;
-  } catch (e) {
-    console.log(e);
-  }
-};
+export const getSchools = async (): Promise<AxiosResponse> => await axios.get(`${baseUrl}/schools`);
 
 export const getSchool = async (id) => {
   try {
