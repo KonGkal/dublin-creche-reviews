@@ -6,10 +6,9 @@ const UserReview = ({ review, setUserReviews }) => {
   const { id, facility, staff, overall, services, comment, SchoolId } = review;
   const { schools } = useContext(SchoolsContext);
 
-  let schoolName;
-  if (schools) {
-    schoolName = schools.filter((school) => school.id === SchoolId);
-  }
+  const schoolName = schools
+    ? schools.filter((school) => school.id === SchoolId)
+    : null;
 
   const deleteReviewHandler = async () => {
     await deleteReview(id);
