@@ -15,11 +15,8 @@ const MyReviews = () => {
     }
   }, [userDetails]);
 
-  const listOfUserReviews = [];
-
-  if (userReviews) {
-    listOfUserReviews.push(
-      userReviews.map((review) => {
+  const listOfUserReviews = userReviews
+    ? userReviews.map((review) => {
         return (
           <UserReview
             key={review.id}
@@ -28,8 +25,7 @@ const MyReviews = () => {
           />
         );
       })
-    );
-  }
+    : null;
 
   return (
     <>
