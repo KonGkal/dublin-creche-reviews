@@ -62,7 +62,7 @@ function App() {
           <Dashboard />
         </SchoolsContext.Provider>
       </div>
-      <footer>© KonGkal 2021 All rights reserved </footer>
+      <footer>© KonGkal 2021 All rights reserved</footer>
     </>
   );
 }

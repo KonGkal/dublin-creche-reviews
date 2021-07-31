@@ -4,7 +4,11 @@ import { Route } from "react-router-dom";
 import ReviewForm from "../reviewForm/ReviewForm";
 import MyReviews from "../myReviews/MyReviews";
 import { useAuth0 } from "@auth0/auth0-react";
-import { addNewUser, findUserbyEmail, getUser } from "../../services/apiService";
+import {
+  addNewUser,
+  findUserbyEmail,
+  getUser,
+} from "../../services/apiService";
 
 const ReviewsContainer = () => {
   const [userDetails, setUserDetails] = useState([]);
@@ -23,13 +27,12 @@ const ReviewsContainer = () => {
   const isExistingUser = (userEmail) => {
     try {
       getAllUsers().then((res) => {
-      if (res.filter((user) => user.email === userEmail).length === 0)
-        addNewUser(user.email);
-    });
+        if (res.filter((user) => user.email === userEmail).length === 0)
+          addNewUser(user.email);
+      });
     } catch (e) {
       console.log(e);
     }
-    
   };
   if (user) isExistingUser(user.email);
 
