@@ -1,25 +1,32 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getSchools } from "../services/apiService";
+import { getSchools, addSchool } from "../services/apiService";
 
 export const getAllSchools = createAsyncThunk(
-  "allSchools,getAllSchools",
+  "schools,getAllSchools",
   async () => {
     const { data } = await getSchools();
     return data;
   }
 );
 
+// export const addNewSchool = createAsyncThunk(
+//   "schools, addNewSchool",
+//   async(payload) => {
+
+//   }
+// )
+
 const initialState = {
-  allSchools: [],
+  schools: [],
 };
 
 export const schoolsSlice = createSlice({
-  name: "allSchools",
+  name: "schools",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getAllSchools.fulfilled, (state, action) => {
-      state.allSchools = action.payload;
+      state.schools = action.payload;
       state.loading = "succeeded";
     });
   },

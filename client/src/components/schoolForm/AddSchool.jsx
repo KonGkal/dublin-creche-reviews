@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { addSchool } from "../../services/apiService";
-import { useContext } from "react";
+// import { useContext } from "react";
 import SchoolsContext from "../../context/SchoolsContext";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -14,15 +14,15 @@ const searchOptions = {
 };
 
 const AddSchool = () => {
-  const { setSchools } = useContext(SchoolsContext);
+  // const { setSchools } = useContext(SchoolsContext);
   const [name, setName] = useState("");
   const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
 
   const addSchoolSubmitHandler = async (event) => {
     event.preventDefault();
 
-    const newSchool = await addSchool(name, coordinates.lat, coordinates.lng);
-    setSchools((prev) => [...prev, newSchool[0]]);
+    // const newSchool = await addSchool(name, coordinates.lat, coordinates.lng);
+    // setSchools((prev) => [...prev, newSchool[0]]);
 
     setName("");
   };

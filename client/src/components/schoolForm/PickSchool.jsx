@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import SchoolsContext from "../../context/SchoolsContext";
 import SelectedSchoolContext from "../../context/SelectedSchoolContext";
+import { useSelector } from "react-redux";
 
 const PickSchool = () => {
   const { selectedSchool, setSelectedSchool } = useContext(
     SelectedSchoolContext
   );
-  const { schools } = useContext(SchoolsContext);
+  const { schools } = useSelector((state) => state.allSchools);
   const schoolList = schools.map((school) => (
     <option className="search-bar" key={school.id} value={school.id}>
       {school.name.split(",")[0]}

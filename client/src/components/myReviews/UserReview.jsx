@@ -4,10 +4,10 @@ import { useSelector } from "react-redux";
 const UserReview = ({ review, setUserReviews }) => {
   const { id, facility, staff, overall, services, comment, SchoolId } = review;
 
-  const { allSchools } = useSelector((state) => state.allSchools);
+  const { schools } = useSelector((state) => state.allSchools);
 
-  const schoolName = allSchools
-    ? allSchools.filter((school) => school.id === SchoolId)
+  const schoolName = schools
+    ? schools.filter((school) => school.id === SchoolId)
     : null;
 
   const deleteReviewHandler = async () => {
