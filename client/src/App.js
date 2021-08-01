@@ -5,6 +5,9 @@ import Dashboard from "./components/dashboard/Dashboard";
 import Loading from "./components/loading/Loading";
 import SchoolsContext from "./context/SchoolsContext";
 import { useLoadScript } from "@react-google-maps/api";
+import { useDispatch } from "react-redux";
+import { getAllSchools } from "./store/schools.store";
+
 import "./App.css";
 
 import { useAuth0 } from "@auth0/auth0-react";
@@ -35,6 +38,12 @@ function App() {
     }
     school();
   }, []);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllSchools());
+  }, [dispatch]);
 
   const { isLoading } = useAuth0();
 
