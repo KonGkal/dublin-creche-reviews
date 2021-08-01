@@ -1,13 +1,13 @@
 import { deleteReview } from "../../services/apiService";
-import SchoolsContext from "../../context/SchoolsContext";
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 
 const UserReview = ({ review, setUserReviews }) => {
   const { id, facility, staff, overall, services, comment, SchoolId } = review;
-  const { schools } = useContext(SchoolsContext);
 
-  const schoolName = schools
-    ? schools.filter((school) => school.id === SchoolId)
+  const { allSchools } = useSelector((state) => state.allSchools);
+
+  const schoolName = allSchools
+    ? allSchools.filter((school) => school.id === SchoolId)
     : null;
 
   const deleteReviewHandler = async () => {

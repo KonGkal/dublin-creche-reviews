@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import { getSchools } from "./services/apiService";
+import React, { useEffect, useRef } from "react";
 import Navbar from "./components/navbar/Navbar";
 import Dashboard from "./components/dashboard/Dashboard";
 import Loading from "./components/loading/Loading";
@@ -14,30 +13,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const libraries = ["places"];
 function App() {
-  const [schools, setSchools] = useState([]);
-
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
     libraries,
   });
 
   const errorCheck = useRef(false);
-  const errorHandler = () => {
-    errorCheck.current = true;
-  };
-
-  useEffect(() => {
-    async function school() {
-      const { data, status } = await getSchools();
-      if (status === 200) {
-        setSchools(data);
-      }
-      if (status === 500) {
-        errorHandler();
-      }
-    }
-    school();
-  }, []);
 
   const dispatch = useDispatch();
 
@@ -67,9 +48,7 @@ function App() {
       </div>
       <Navbar />
       <div className="container">
-        <SchoolsContext.Provider value={{ schools, setSchools }}>
-          <Dashboard />
-        </SchoolsContext.Provider>
+        <Dashboard />
       </div>
       <footer>© KonGkal 2021 All rights reserved</footer>
     </>
