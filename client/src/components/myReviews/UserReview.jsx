@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const UserReview = ({ review, setUserReviews }) => {
   const { id, facility, staff, overall, services, comment, SchoolId } = review;
 
-  const { schools } = useSelector((state) => state.allSchools);
+  const { schools } = useSelector((state) => state.schools);
 
   const schoolName = schools
     ? schools.filter((school) => school.id === SchoolId)

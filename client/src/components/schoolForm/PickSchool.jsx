@@ -6,7 +6,7 @@ const PickSchool = () => {
   const { selectedSchool, setSelectedSchool } = useContext(
     SelectedSchoolContext
   );
-  const { schools } = useSelector((state) => state.allSchools);
+  const { schools } = useSelector((state) => state.schools);
   const schoolList = schools.map((school) => (
     <option className="search-bar" key={school.id} value={school.id}>
       {school.name.split(",")[0]}

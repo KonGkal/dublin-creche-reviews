@@ -4,7 +4,7 @@ import ListedSchool from "../listedSchool/ListedSchool";
 import { useSelector } from "react-redux";
 
 const SchoolList = () => {
-  const { schools } = useSelector((state) => state.allSchools);
+  const { schools } = useSelector((state) => state.schools);
 
   const schoolList = schools.map((school) => (
     <Link key={school.id} to={`/schoolReviews/${school.id}`}>
