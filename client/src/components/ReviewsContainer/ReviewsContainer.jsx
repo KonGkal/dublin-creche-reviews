@@ -6,7 +6,7 @@ import MyReviews from "../myReviews/MyReviews";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
   addNewUser,
-  findUserbyEmail,
+  findUserByEmail,
   getUser,
 } from "../../services/apiService";
 
@@ -38,7 +38,7 @@ const ReviewsContainer = () => {
 
   useEffect(() => {
     if (user) {
-      findUserbyEmail(user.email).then((user) => {
+      findUserByEmail(user.email).then((user) => {
         setUserDetails(user);
       });
     }

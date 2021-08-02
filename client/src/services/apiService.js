@@ -41,7 +41,7 @@ export const addNewUser = async (email) => {
   }
 };
 
-export const findUserbyEmail = async (email) => {
+export const findUserByEmail = async (email) => {
   try {
     const res = await fetch(`${baseUrl}/user`, {
       method: "POST",
@@ -56,9 +56,9 @@ export const findUserbyEmail = async (email) => {
   }
 };
 
-export const getSchoolReviews = async (SChoolId) => {
+export const getSchoolReviews = async (SchoolId) => {
   try {
-    const res = await fetch(`${baseUrl}/schoolReviews/${SChoolId}`, {
+    const res = await fetch(`${baseUrl}/schoolReviews/${SchoolId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -72,14 +72,8 @@ export const getSchoolReviews = async (SChoolId) => {
 
 export const addSchool = async (name, lat, lng) => {
   try {
-    const res = await fetch(`${baseUrl}/createSchool`, {
-      method: "POST",
-      body: JSON.stringify({ name, lat, lng }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    return await res.json();
+    const res = await axios.post(`${baseUrl}/createSchool`, { name, lat, lng });
+    return await res.data;
   } catch (e) {
     console.log(e);
   }

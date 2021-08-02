@@ -9,12 +9,15 @@ export const getAllSchools = createAsyncThunk(
   }
 );
 
-// export const addNewSchool = createAsyncThunk(
-//   "schools, addNewSchool",
-//   async(payload) => {
-
-//   }
-// )
+export const addNewSchool = createAsyncThunk(
+  "schools,addNewSchool",
+  async (payload) => {
+    const { name, lat, lng } = payload;
+    const data = await addSchool(name, lat, lng);
+    if (!data) return {};
+    return data[0];
+  }
+);
 
 const initialState = {
   schools: [],
@@ -27,6 +30,10 @@ export const schoolsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getAllSchools.fulfilled, (state, action) => {
       state.schools = action.payload;
+      state.loading = "succeeded";
+    });
+    builder.addCase(addNewSchool.fulfilled, (state, action) => {
+      state.schools = [...state.schools, action.payload];
       state.loading = "succeeded";
     });
   },

@@ -7,11 +7,13 @@ const PickSchool = () => {
     SelectedSchoolContext
   );
   const { schools } = useSelector((state) => state.schools);
-  const schoolList = schools.map((school) => (
-    <option className="search-bar" key={school.id} value={school.id}>
-      {school.name.split(",")[0]}
-    </option>
-  ));
+  const schoolList = schools.length
+    ? schools.map((school) => (
+        <option className="search-bar" key={school.id} value={school.id}>
+          {school.name.split(",")[0]}
+        </option>
+      ))
+    : null;
 
   return (
     <div className="pick-school-container">

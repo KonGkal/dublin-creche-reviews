@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import Navbar from "./components/navbar/Navbar";
 import Dashboard from "./components/dashboard/Dashboard";
 import Loading from "./components/loading/Loading";
-import SchoolsContext from "./context/SchoolsContext";
 import { useLoadScript } from "@react-google-maps/api";
 import { useDispatch } from "react-redux";
 import { getAllSchools } from "./store/schools.store";

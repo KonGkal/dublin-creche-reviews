@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { addSchool } from "../../services/apiService";
-// import { useContext } from "react";
-import SchoolsContext from "../../context/SchoolsContext";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
-
+import { useDispatch } from "react-redux";
+import { addNewSchool } from "../../store/schools.store";
 const searchOptions = {
   types: ["establishment"],
   location: { lat: () => 53.3498053, lng: () => -6.2603097 },
@@ -14,15 +12,16 @@ const searchOptions = {
 };
 
 const AddSchool = () => {
-  // const { setSchools } = useContext(SchoolsContext);
   const [name, setName] = useState("");
   const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
 
+  const dispatch = useDispatch();
+
   const addSchoolSubmitHandler = async (event) => {
     event.preventDefault();
-
-    // const newSchool = await addSchool(name, coordinates.lat, coordinates.lng);
-    // setSchools((prev) => [...prev, newSchool[0]]);
+    dispatch(
+      addNewSchool({ name: name, lat: coordinates.lat, lng: coordinates.lng })
+    );
 
     setName("");
   };
