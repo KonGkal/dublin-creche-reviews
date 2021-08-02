@@ -1,11 +1,6 @@
-import { useContext } from "react";
-import SelectedSchoolContext from "../../context/SelectedSchoolContext";
 import { useSelector } from "react-redux";
 
-const PickSchool = () => {
-  const { selectedSchool, setSelectedSchool } = useContext(
-    SelectedSchoolContext
-  );
+const PickSchool = ({ selectedSchool, setSelectedSchool }) => {
   const { schools } = useSelector((state) => state.schools);
   const schoolList = schools.length
     ? schools.map((school) => (

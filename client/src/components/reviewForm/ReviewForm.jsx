@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import "./ReviewForm.css";
 import SchoolFormContainer from "../schoolForm/SchoolFormContainer";
-import SelectedSchoolContext from "../../context/SelectedSchoolContext";
 import ReviewsContext from "../../context/ReviewsContext";
 import { createReview } from "../../services/apiService";
 import UserDetailsContext from "../../context/UserDetailsContext";
@@ -40,12 +39,10 @@ const ReviewForm = () => {
     <>
       <h1 className="header">Leave a Review</h1>
       <div className="school-list review-form shadow-and-border">
-        <SelectedSchoolContext.Provider
-          value={{ selectedSchool, setSelectedSchool }}
-        >
-          <SchoolFormContainer />
-        </SelectedSchoolContext.Provider>
-
+        <SchoolFormContainer
+          selectedSchool={selectedSchool}
+          setSelectedSchool={setSelectedSchool}
+        />
         <form onSubmit={submitHandler}>
           <div className="school-form-container shadow-and-border">
             <h1 className="form-title">Create a Review</h1>
