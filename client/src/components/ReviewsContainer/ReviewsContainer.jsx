@@ -17,7 +17,6 @@ const ReviewsContainer = () => {
   const getAllUsers = async () => {
     try {
       const token = await getAccessTokenSilently();
-
       return await getUser(token);
     } catch (e) {
       console.log(e);
@@ -34,6 +33,7 @@ const ReviewsContainer = () => {
       console.log(e);
     }
   };
+
   if (user) isExistingUser(user.email);
 
   useEffect(() => {
