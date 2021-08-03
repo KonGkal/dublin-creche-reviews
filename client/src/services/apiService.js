@@ -13,14 +13,8 @@ export const getSchools = async () => {
 
 export const getSchool = async (id) => {
   try {
-    const res = await fetch(`${baseUrl}/school`, {
-      method: "POST",
-      body: JSON.stringify({ id }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    return await res.json();
+    const res = await axios.post(`${baseUrl}/school`, { id });
+    return await res.data;
   } catch (e) {
     console.log(e);
   }
@@ -28,43 +22,26 @@ export const getSchool = async (id) => {
 
 export const addNewUser = async (email) => {
   try {
-    const res = await fetch(`${baseUrl}/createUser`, {
-      method: "POST",
-      body: JSON.stringify({ email }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    return await res.json();
+    const res = await axios.post(`${baseUrl}/createUser`, { email });
+    return await res.data;
   } catch (e) {
     console.log(e);
   }
 };
 
-export const findUserbyEmail = async (email) => {
+export const findUserByEmail = async (email) => {
   try {
-    const res = await fetch(`${baseUrl}/user`, {
-      method: "POST",
-      body: JSON.stringify({ email }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    return await res.json();
+    const res = await axios.post(`${baseUrl}/user`, { email });
+    return await res.data;
   } catch (e) {
     console.log(e);
   }
 };
 
-export const getSchoolReviews = async (SChoolId) => {
+export const getSchoolReviews = async (SchoolId) => {
   try {
-    const res = await fetch(`${baseUrl}/schoolReviews/${SChoolId}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    return await res.json();
+    const res = await axios.post(`${baseUrl}/schoolReviews/${SchoolId}`);
+    return await res.data;
   } catch (e) {
     console.log(e);
   }
@@ -72,14 +49,8 @@ export const getSchoolReviews = async (SChoolId) => {
 
 export const addSchool = async (name, lat, lng) => {
   try {
-    const res = await fetch(`${baseUrl}/createSchool`, {
-      method: "POST",
-      body: JSON.stringify({ name, lat, lng }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    return await res.json();
+    const res = await axios.post(`${baseUrl}/createSchool`, { name, lat, lng });
+    return await res.data;
   } catch (e) {
     console.log(e);
   }
@@ -95,22 +66,16 @@ export const createReview = async (
 ) => {
   try {
     const overall = ((+facility + +staff + +services) / 3).toFixed(1);
-    const res = await fetch(`${baseUrl}/createReview`, {
-      method: "POST",
-      body: JSON.stringify({
-        facility,
-        staff,
-        services,
-        overall: +overall,
-        comment,
-        UserId,
-        SchoolId,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+    const res = await axios.post(`${baseUrl}/createReview`, {
+      facility,
+      staff,
+      services,
+      overall: +overall,
+      comment,
+      UserId,
+      SchoolId,
     });
-    return await res.json();
+    return await res.data;
   } catch (e) {
     console.log(e);
   }
@@ -118,14 +83,8 @@ export const createReview = async (
 
 export const getUserReviews = async (UserId) => {
   try {
-    const res = await fetch(`${baseUrl}/userReviews`, {
-      method: "POST",
-      body: JSON.stringify({ UserId }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    return await res.json();
+    const res = await axios.post(`${baseUrl}/userReviews`, { UserId });
+    return await res.data;
   } catch (e) {
     console.log(e);
   }
@@ -133,9 +92,7 @@ export const getUserReviews = async (UserId) => {
 
 export const deleteReview = async (id) => {
   try {
-    return await fetch(`${baseUrl}/deleteReview/${id}`, {
-      method: "DELETE",
-    });
+    return await axios.delete(`${baseUrl}/deleteReview/${id}`);
   } catch (e) {
     console.log(e);
   }
@@ -143,12 +100,12 @@ export const deleteReview = async (id) => {
 
 export const getUser = async (token) => {
   try {
-    const res = await fetch(`${baseUrl}/users`, {
+    const res = await axios.get(`${baseUrl}/users`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    return res.json();
+    return await res.data;
   } catch (e) {
     console.log(e);
   }

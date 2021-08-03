@@ -1,19 +1,32 @@
-module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    node: true
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier",
+    "prettier/react"
+  ],
+  "rules": {
+    "react/prop-types": 0,
+    "react/react-in-jsx-scope": 0
   },
-  extends: ["airbnb-base", "prettier"],
-  parserOptions: {
-    ecmaVersion: 2021,
-    sourceType: "module",
-    ecmaFeatures: {
+  "plugins": ["react", "import", "jsx-a11y"],
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "ecmaFeatures": {
       "jsx": true
     }
   },
-  plugins: ["prettier"],
-  rules: {
-    "prettier/prettier": "error",
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
   },
-};
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

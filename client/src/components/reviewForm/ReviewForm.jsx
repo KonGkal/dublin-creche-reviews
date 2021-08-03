@@ -1,16 +1,14 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import "./ReviewForm.css";
 import SchoolFormContainer from "../schoolForm/SchoolFormContainer";
-import SelectedSchoolContext from "../../context/SelectedSchoolContext";
-import ReviewsContext from "../../context/ReviewsContext";
 import { createReview } from "../../services/apiService";
-import UserDetailsContext from "../../context/UserDetailsContext";
+
+import { useSelector } from "react-redux";
 
 const ReviewForm = () => {
   const [selectedSchool, setSelectedSchool] = useState("");
-  const { setReviews } = useContext(ReviewsContext);
-
-  const { userDetails } = useContext(UserDetailsContext);
+  const { user } = useSelector((state) => state.user);
+  const [userDetails] = user;
 
   const [facility, setFacility] = useState("");
   const [staff, setStaff] = useState("");
@@ -20,15 +18,14 @@ const ReviewForm = () => {
   const submitHandler = async (event) => {
     event.preventDefault();
 
-    const newReview = await createReview(
+    await createReview(
       facility,
       staff,
       services,
       comment,
-      userDetails[0].id,
+      userDetails.id,
       selectedSchool
     );
-    setReviews((prev) => [...prev, newReview]);
 
     setFacility("");
     setStaff("");
@@ -40,12 +37,10 @@ const ReviewForm = () => {
     <>
       <h1 className="header">Leave a Review</h1>
       <div className="school-list review-form shadow-and-border">
-        <SelectedSchoolContext.Provider
-          value={{ selectedSchool, setSelectedSchool }}
-        >
-          <SchoolFormContainer />
-        </SelectedSchoolContext.Provider>
-
+        <SchoolFormContainer
+          selectedSchool={selectedSchool}
+          setSelectedSchool={setSelectedSchool}
+        />
         <form onSubmit={submitHandler}>
           <div className="school-form-container shadow-and-border">
             <h1 className="form-title">Create a Review</h1>

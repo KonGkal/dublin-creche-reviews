@@ -1,15 +1,16 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ListedReview from "../listedReview/ListedReview";
-import { getSchoolReviews, getSchool } from "../../services/apiService";
+import { getSchool } from "../../services/apiService";
 import { useParams } from "react-router-dom";
-import ReviewsContext from "../../context/ReviewsContext";
 import { GoogleMap, Marker } from "@react-google-maps/api";
+import { useSelector, useDispatch } from "react-redux";
+import { getOneSchoolReviews } from "../../store/schoolReviews.store";
 
 const ReviewsList = () => {
   const [schoolDetails, setSchoolDetails] = useState([]);
-  const { reviews, setReviews } = useContext(ReviewsContext);
-
+  const { schoolReviews } = useSelector((state) => state.schoolReviews);
   const { schoolId } = useParams();
+  const dispatch = useDispatch();
 
   const mapContainerStyle = {
     width: "15em",
@@ -26,20 +27,19 @@ const ReviewsList = () => {
   };
 
   useEffect(() => {
-    getSchoolReviews(schoolId).then((schoolReviews) => {
-      setReviews(schoolReviews);
-    });
+    dispatch(getOneSchoolReviews(schoolId));
+
     getSchool(schoolId).then((school) => {
       setSchoolDetails(school);
     });
-  }, [schoolId, setReviews]);
+  }, [schoolId, dispatch]);
 
-  const listOfReviews = reviews.map((review) => {
-    return <ListedReview key={review.id} review={review} />;
+  const listOfReviews = schoolReviews.map((review, index) => {
+    return <ListedReview key={index} review={review} />;
   });
 
-  const rating = reviews.length
-    ? reviews.reduce((acc, cur) => {
+  const rating = schoolReviews.length
+    ? schoolReviews.reduce((acc, cur) => {
         return acc + cur.overall;
       }, 0)
     : null;
@@ -63,7 +63,8 @@ const ReviewsList = () => {
         {rating ? (
           <div className="rating-header-container shadow-and-border">
             <h1 className="listed-reviews-rating-header">
-              Overall School Rating: {(rating / reviews.length).toFixed(1)}{" "}
+              Overall School Rating:{" "}
+              {(rating / schoolReviews.length).toFixed(1)}{" "}
             </h1>
           </div>
         ) : (

@@ -1,10 +1,10 @@
 import { deleteReview } from "../../services/apiService";
-import SchoolsContext from "../../context/SchoolsContext";
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 
 const UserReview = ({ review, setUserReviews }) => {
   const { id, facility, staff, overall, services, comment, SchoolId } = review;
-  const { schools } = useContext(SchoolsContext);
+
+  const { schools } = useSelector((state) => state.schools);
 
   const schoolName = schools
     ? schools.filter((school) => school.id === SchoolId)

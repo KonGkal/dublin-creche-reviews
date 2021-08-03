@@ -2,7 +2,7 @@ import PickSchool from "./PickSchool";
 import AddSchool from "./AddSchool";
 import "./SchoolFormContainer.css";
 
-const SchoolFormContainer = () => {
+const SchoolFormContainer = ({ selectedSchool, setSelectedSchool }) => {
   return (
     <>
       <div className="school-form-container shadow-and-border">
@@ -11,7 +11,10 @@ const SchoolFormContainer = () => {
       </div>
       <div className="school-form-container shadow-and-border">
         <h1 className="form-title">Pick a School</h1>
-        <PickSchool />
+        <PickSchool
+          selectedSchool={selectedSchool}
+          setSelectedSchool={setSelectedSchool}
+        />
       </div>
     </>
   );

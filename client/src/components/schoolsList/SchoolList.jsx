@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ListedSchool from "../listedSchool/ListedSchool";
-import { useContext } from "react";
-import SchoolsContext from "../../context/SchoolsContext";
+import { useSelector } from "react-redux";
 
 const SchoolList = () => {
-  const { schools } = useContext(SchoolsContext);
+  const { schools } = useSelector((state) => state.schools);
 
   const schoolList = schools.map((school) => (
     <Link key={school.id} to={`/schoolReviews/${school.id}`}>
