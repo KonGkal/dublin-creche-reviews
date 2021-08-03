@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from "react";
-import UserDetailsContext from "../../context/UserDetailsContext";
+import React, { useEffect } from "react";
 import { Route } from "react-router-dom";
 import ReviewForm from "../reviewForm/ReviewForm";
 import MyReviews from "../myReviews/MyReviews";
 import { useAuth0 } from "@auth0/auth0-react";
-import {
-  addNewUser,
-  findUserByEmail,
-  getUser,
-} from "../../services/apiService";
+import { findUserByEmail } from "../../services/apiService";
+import { useSelector, useDispatch } from "react-redux";
+import { getOneUser, subscribeUser } from "../../store/userDetails.store";
+import { setUser } from "../../store/userDetails.store";
 
 const ReviewsContainer = () => {
-  const [userDetails, setUserDetails] = useState([]);
   const { user, getAccessTokenSilently } = useAuth0();
+  const userDetail = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
 
   const getAllUsers = async () => {
     try {
       const token = await getAccessTokenSilently();
-      return await getUser(token);
+      return dispatch(getOneUser(token));
     } catch (e) {
       console.log(e);
     }
@@ -25,30 +24,32 @@ const ReviewsContainer = () => {
 
   const isExistingUser = (userEmail) => {
     try {
-      getAllUsers().then((res) => {
-        if (res.filter((user) => user.email === userEmail).length === 0)
-          addNewUser(user.email);
-      });
+      if (
+        userDetail &&
+        userDetail.filter((user) => user.email === userEmail).length === 0
+      ) {
+        dispatch(subscribeUser(user.email));
+      }
     } catch (e) {
       console.log(e);
     }
   };
 
-  if (user) isExistingUser(user.email);
-
   useEffect(() => {
+    if (!user) getAllUsers();
+    if (user) isExistingUser(user.email);
     if (user) {
       findUserByEmail(user.email).then((user) => {
-        setUserDetails(user);
+        dispatch(setUser(user));
       });
     }
-  }, [user]);
+  }, [user, dispatch]);
 
   return (
-    <UserDetailsContext.Provider value={{ userDetails }}>
+    <>
       <Route path="/review" component={ReviewForm} />
       <Route path="/myReviews" component={MyReviews} />
-    </UserDetailsContext.Provider>
+    </>
   );
 };
 

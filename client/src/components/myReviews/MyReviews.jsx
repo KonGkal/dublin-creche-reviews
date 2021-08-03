@@ -1,15 +1,16 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { getUserReviews } from "../../services/apiService";
-import UserDetailsContext from "../../context/UserDetailsContext";
+import { useSelector } from "react-redux";
 import UserReview from "./UserReview";
 
 const MyReviews = () => {
-  const { userDetails } = useContext(UserDetailsContext);
   const [userReviews, setUserReviews] = useState([]);
+  const { user } = useSelector((state) => state.user);
+  const [userDetails] = user;
 
   useEffect(() => {
-    if (userDetails.length) {
-      getUserReviews(userDetails[0].id).then((reviews) => {
+    if (userDetails) {
+      getUserReviews(userDetails.id).then((reviews) => {
         setUserReviews(reviews);
       });
     }

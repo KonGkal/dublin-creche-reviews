@@ -8,12 +8,8 @@ import { getOneSchoolReviews } from "../../store/schoolReviews.store";
 
 const ReviewsList = () => {
   const [schoolDetails, setSchoolDetails] = useState([]);
-
   const { schoolReviews } = useSelector((state) => state.schoolReviews);
-
-  console.log(schoolReviews);
   const { schoolId } = useParams();
-
   const dispatch = useDispatch();
 
   const mapContainerStyle = {

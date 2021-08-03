@@ -1,13 +1,14 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import "./ReviewForm.css";
 import SchoolFormContainer from "../schoolForm/SchoolFormContainer";
 import { createReview } from "../../services/apiService";
-import UserDetailsContext from "../../context/UserDetailsContext";
+
+import { useSelector } from "react-redux";
 
 const ReviewForm = () => {
   const [selectedSchool, setSelectedSchool] = useState("");
-
-  const { userDetails } = useContext(UserDetailsContext);
+  const { user } = useSelector((state) => state.user);
+  const [userDetails] = user;
 
   const [facility, setFacility] = useState("");
   const [staff, setStaff] = useState("");
@@ -22,7 +23,7 @@ const ReviewForm = () => {
       staff,
       services,
       comment,
-      userDetails[0].id,
+      userDetails.id,
       selectedSchool
     );
 
