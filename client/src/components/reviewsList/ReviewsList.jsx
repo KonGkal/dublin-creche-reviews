@@ -34,8 +34,8 @@ const ReviewsList = () => {
     });
   }, [schoolId, setReviews]);
 
-  const listOfReviews = reviews.map((review) => {
-    return <ListedReview key={review.id} review={review} />;
+  const listOfReviews = reviews.map((review, index) => {
+    return <ListedReview key={index} review={review} />;
   });
 
   const rating = reviews.length

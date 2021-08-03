@@ -58,13 +58,8 @@ export const findUserByEmail = async (email) => {
 
 export const getSchoolReviews = async (SchoolId) => {
   try {
-    const res = await fetch(`${baseUrl}/schoolReviews/${SchoolId}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    return await res.json();
+    const res = await axios.post(`${baseUrl}/schoolReviews/${SchoolId}`);
+    return await res.data;
   } catch (e) {
     console.log(e);
   }
