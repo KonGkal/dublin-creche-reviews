@@ -1,13 +1,11 @@
 import { useState, useContext } from "react";
 import "./ReviewForm.css";
 import SchoolFormContainer from "../schoolForm/SchoolFormContainer";
-import ReviewsContext from "../../context/ReviewsContext";
 import { createReview } from "../../services/apiService";
 import UserDetailsContext from "../../context/UserDetailsContext";
 
 const ReviewForm = () => {
   const [selectedSchool, setSelectedSchool] = useState("");
-  const { setReviews } = useContext(ReviewsContext);
 
   const { userDetails } = useContext(UserDetailsContext);
 
@@ -19,7 +17,7 @@ const ReviewForm = () => {
   const submitHandler = async (event) => {
     event.preventDefault();
 
-    const newReview = await createReview(
+    await createReview(
       facility,
       staff,
       services,
@@ -27,7 +25,6 @@ const ReviewForm = () => {
       userDetails[0].id,
       selectedSchool
     );
-    setReviews((prev) => [...prev, newReview]);
 
     setFacility("");
     setStaff("");
