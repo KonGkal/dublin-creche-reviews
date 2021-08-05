@@ -9,7 +9,7 @@ import { ReactComponent as IconSvg } from "../../icons/noun_Child_1869302.svg";
 const Dashboard = () => {
   return (
     <div className="dashboard-container">
-      <IconSvg className="icon" alt="icon" />
+      <IconSvg className="icon" />
       <Switch>
         <Route exact path="/" component={SchoolList} />
         <Route exact path="/review" component={ReviewsContainer} />
