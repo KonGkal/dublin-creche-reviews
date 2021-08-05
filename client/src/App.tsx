@@ -10,11 +10,10 @@ import "./App.css";
 
 import { useAuth0 } from "@auth0/auth0-react";
 
-const libraries = ["places"];
 function App() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
-    libraries,
+    libraries: ["places"],
   });
 
   const errorCheck = useRef(false);
