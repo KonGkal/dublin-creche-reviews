@@ -5,11 +5,13 @@ import { useParams } from "react-router-dom";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneSchoolReviews } from "../../store/schoolReviews.store";
+import { schoolReviewsSelector } from "../../store/store";
 
 const ReviewsList = () => {
-  const [schoolDetails, setSchoolDetails] = useState([]);
-  const { schoolReviews } = useSelector((state) => state.schoolReviews);
-  const { schoolId } = useParams();
+  const [schoolDetails, setSchoolDetails] = useState<SchoolInterface>();
+  const { schoolReviews } = useSelector(schoolReviewsSelector);
+
+  const { schoolId } = useParams<SchoolParams>();
   const dispatch = useDispatch();
 
   const mapContainerStyle = {

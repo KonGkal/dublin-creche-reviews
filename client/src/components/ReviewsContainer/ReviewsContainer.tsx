@@ -7,10 +7,11 @@ import { findUserByEmail } from "../../services/apiService";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneUser, subscribeUser } from "../../store/userDetails.store";
 import { setUser } from "../../store/userDetails.store";
+import { userSelector } from "../../store/store";
 
 const ReviewsContainer = () => {
   const { user, getAccessTokenSilently } = useAuth0();
-  const userDetail = useSelector((state) => state.user.user);
+  const { user: userDetail } = useSelector(userSelector);
   const dispatch = useDispatch();
 
   const getAllUsers = async () => {

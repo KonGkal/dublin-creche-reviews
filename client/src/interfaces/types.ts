@@ -19,3 +19,14 @@ interface ReviewInterface {
   UserId: number;
   SchoolId: number;
 }
+
+interface UserDetailsInterface {
+  id: number;
+  email: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+type SchoolParams = {
+  schoolId: string;
+};

@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { getUserReviews } from "../../services/apiService";
 import { useSelector } from "react-redux";
+import { userSelector } from "../../store/store";
 import UserReview from "./UserReview";
 
 const MyReviews = () => {
   const [userReviews, setUserReviews] = useState([]);
-  const { user } = useSelector((state) => state.user);
+  const { user } = useSelector(userSelector);
   const [userDetails] = user;
 
   useEffect(() => {
