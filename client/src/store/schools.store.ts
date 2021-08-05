@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getSchools, addSchool } from "../services/apiService";
+import { SchoolInterface } from "../interfaces/types";
 
 export const getAllSchools = createAsyncThunk(
   "schools,getAllSchools",

@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getUser, addNewUser } from "../services/apiService";
+import { UserDetailsInterface } from "../interfaces/types";
 
 export const getOneUser = createAsyncThunk(
   "user,getOneUser",

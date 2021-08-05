@@ -1,4 +1,3 @@
-import React from "react";
 import { Switch, Route } from "react-router-dom";
 import SchoolList from "../schoolsList/SchoolList";
 import ReviewsList from "../reviewsList/ReviewsList";
@@ -14,7 +13,12 @@ const Dashboard = () => {
         <Route exact path="/" component={SchoolList} />
         <Route exact path="/review" component={ReviewsContainer} />
         <Route exact path="/myReviews" component={ReviewsContainer} />
-        <Route path="/schoolReviews/:schoolId" exact component={ReviewsList} />
+        <Route
+          exact
+          path="/schoolReviews/:schoolId"
+          component={ReviewsList}
+          key={document.location.href}
+        />
       </Switch>
     </div>
   );

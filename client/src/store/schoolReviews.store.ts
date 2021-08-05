@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getSchoolReviews } from "../services/apiService";
+import { ReviewInterface } from "../interfaces/types";
 
 export const getOneSchoolReviews = createAsyncThunk(
   "schoolReviews,getOneSchoolReviews",

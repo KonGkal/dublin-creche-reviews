@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ListedReview from "../listedReview/ListedReview";
 import { getSchool } from "../../services/apiService";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneSchoolReviews } from "../../store/schoolReviews.store";
 import { schoolReviewsSelector } from "../../store/store";
+import { SchoolInterface, SchoolParams } from "../../interfaces/types";
 
 const ReviewsList = () => {
   const [schoolDetails, setSchoolDetails] = useState<SchoolInterface>();
   const { schoolReviews } = useSelector(schoolReviewsSelector);
 
   const { schoolId } = useParams<SchoolParams>();
+  const location = useLocation();
   const dispatch = useDispatch();
 
   const mapContainerStyle = {
@@ -30,11 +32,10 @@ const ReviewsList = () => {
 
   useEffect(() => {
     dispatch(getOneSchoolReviews(schoolId));
-
     getSchool(schoolId).then((school) => {
       setSchoolDetails(school);
     });
-  }, [schoolId, dispatch]);
+  }, [schoolId, dispatch, location]);
 
   const listOfReviews = schoolReviews.map((review, index) => {
     return <ListedReview key={index} review={review} />;

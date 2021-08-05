@@ -37,8 +37,8 @@ function App() {
     return <Loading />;
   }
 
-  if (loadError) return "Error loading Maps";
-  if (!isLoaded) return "Loading Maps";
+  if (loadError) return <h1>Error loading Maps</h1>;
+  if (!isLoaded) return <h1>Loading Maps</h1>;
   return (
     <>
       <div>

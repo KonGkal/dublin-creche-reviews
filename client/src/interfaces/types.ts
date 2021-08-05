@@ -1,4 +1,4 @@
-interface SchoolInterface {
+export interface SchoolInterface {
   id: number;
   name: string;
   lat: number;
@@ -7,7 +7,7 @@ interface SchoolInterface {
   updatedAt: string;
 }
 
-interface ReviewInterface {
+export interface ReviewInterface {
   id: number;
   facility: number;
   staff: number;
@@ -20,13 +20,13 @@ interface ReviewInterface {
   SchoolId: number;
 }
 
-interface UserDetailsInterface {
+export interface UserDetailsInterface {
   id: number;
   email: string;
   createdAt: string;
   updatedAt: string;
 }
 
-type SchoolParams = {
+export type SchoolParams = {
   schoolId: string;
 };
