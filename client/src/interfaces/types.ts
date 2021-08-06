@@ -21,7 +21,7 @@ export interface ReviewInterface {
 }
 
 export interface UserDetailsInterface {
-  id: number;
+  id: string;
   email: string;
   createdAt: string;
   updatedAt: string;

@@ -11,7 +11,7 @@ export const getSchools = async () => {
   }
 };
 
-export const getSchool = async (id) => {
+export const getSchool = async (id: string) => {
   try {
     const res = await axios.post(`${baseUrl}/school`, { id });
     return await res.data;
@@ -20,7 +20,7 @@ export const getSchool = async (id) => {
   }
 };
 
-export const addNewUser = async (email) => {
+export const addNewUser = async (email: string) => {
   try {
     const res = await axios.post(`${baseUrl}/createUser`, { email });
     return await res.data;
@@ -29,7 +29,7 @@ export const addNewUser = async (email) => {
   }
 };
 
-export const findUserByEmail = async (email) => {
+export const findUserByEmail = async (email: string) => {
   try {
     const res = await axios.post(`${baseUrl}/user`, { email });
     return await res.data;
@@ -38,7 +38,7 @@ export const findUserByEmail = async (email) => {
   }
 };
 
-export const getSchoolReviews = async (SchoolId) => {
+export const getSchoolReviews = async (SchoolId: string) => {
   try {
     const res = await axios.post(`${baseUrl}/schoolReviews/${SchoolId}`);
     return await res.data;
@@ -47,7 +47,7 @@ export const getSchoolReviews = async (SchoolId) => {
   }
 };
 
-export const addSchool = async (name, lat, lng) => {
+export const addSchool = async (name: string, lat: number, lng: number) => {
   try {
     const res = await axios.post(`${baseUrl}/createSchool`, { name, lat, lng });
     return await res.data;
@@ -57,12 +57,12 @@ export const addSchool = async (name, lat, lng) => {
 };
 
 export const createReview = async (
-  facility,
-  staff,
-  services,
-  comment,
-  UserId,
-  SchoolId
+  facility: string,
+  staff: string,
+  services: string,
+  comment: string,
+  UserId: string,
+  SchoolId: string
 ) => {
   try {
     const overall = ((+facility + +staff + +services) / 3).toFixed(1);
@@ -81,7 +81,7 @@ export const createReview = async (
   }
 };
 
-export const getUserReviews = async (UserId) => {
+export const getUserReviews = async (UserId: string) => {
   try {
     const res = await axios.post(`${baseUrl}/userReviews`, { UserId });
     return await res.data;
@@ -90,7 +90,7 @@ export const getUserReviews = async (UserId) => {
   }
 };
 
-export const deleteReview = async (id) => {
+export const deleteReview = async (id: number) => {
   try {
     return await axios.delete(`${baseUrl}/deleteReview/${id}`);
   } catch (e) {
@@ -98,7 +98,7 @@ export const deleteReview = async (id) => {
   }
 };
 
-export const getUser = async (token) => {
+export const getUser = async (token: any) => {
   try {
     const res = await axios.get(`${baseUrl}/users`, {
       headers: {

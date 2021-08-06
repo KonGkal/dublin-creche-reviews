@@ -1,7 +1,13 @@
 import { useSelector } from "react-redux";
 import { schoolsSelector } from "../../store/store";
 
-const PickSchool = ({ selectedSchool, setSelectedSchool }) => {
+const PickSchool = ({
+  selectedSchool,
+  setSelectedSchool,
+}: {
+  selectedSchool: string;
+  setSelectedSchool: Function;
+}) => {
   const { schools } = useSelector(schoolsSelector);
   const schoolList = schools.length
     ? schools.map((school) => (

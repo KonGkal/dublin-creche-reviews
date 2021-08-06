@@ -1,11 +1,11 @@
-import { GoogleMapProps } from "@react-google-maps/api";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
 import { useDispatch } from "react-redux";
 import { addNewSchool } from "../../store/schools.store";
+
 const searchOptions = {
   types: ["establishment"],
   location: new google.maps.LatLng(53.3498053, -6.2603097),
@@ -14,11 +14,11 @@ const searchOptions = {
 
 const AddSchool = () => {
   const [name, setName] = useState("");
-  const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
+  const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
 
   const dispatch = useDispatch();
 
-  const addSchoolSubmitHandler = async (event) => {
+  const addSchoolSubmitHandler = async (event: FormEvent) => {
     event.preventDefault();
     dispatch(
       addNewSchool({ name: name, lat: coordinates.lat, lng: coordinates.lng })
@@ -27,7 +27,7 @@ const AddSchool = () => {
     setName("");
   };
 
-  const handleSelect = async (value) => {
+  const handleSelect = async (value: any) => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
     setCoordinates(latLng);

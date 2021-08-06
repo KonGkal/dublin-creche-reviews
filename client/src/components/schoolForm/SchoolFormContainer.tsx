@@ -2,7 +2,13 @@ import PickSchool from "./PickSchool";
 import AddSchool from "./AddSchool";
 import "./SchoolFormContainer.css";
 
-const SchoolFormContainer = ({ selectedSchool, setSelectedSchool }) => {
+const SchoolFormContainer = ({
+  selectedSchool,
+  setSelectedSchool,
+}: {
+  selectedSchool: string;
+  setSelectedSchool: Function;
+}) => {
   return (
     <>
       <div className="school-form-container shadow-and-border">
