@@ -1,4 +1,4 @@
-import { useEffect, useState, useLayoutEffect } from "react";
+import { useEffect, useState } from "react";
 import ListedReview from "../listedReview/ListedReview";
 import { getSchool } from "../../services/apiService";
 import { useParams } from "react-router-dom";

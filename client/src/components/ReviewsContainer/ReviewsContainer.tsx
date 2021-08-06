@@ -13,7 +13,6 @@ const ReviewsContainer = () => {
   const { user, getAccessTokenSilently } = useAuth0();
   const { user: userDetail } = useSelector(userSelector);
   const dispatch = useDispatch();
-  console.log(user);
 
   const getAllUsers = async () => {
     try {
