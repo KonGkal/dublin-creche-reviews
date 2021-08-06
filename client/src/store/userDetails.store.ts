@@ -38,14 +38,26 @@ export const userSlice = createSlice({
       state.loading = "succeeded";
     },
   },
-  extraReducers: (builders) => {
-    builders.addCase(getOneUser.fulfilled, (state, action) => {
+  extraReducers: (builder) => {
+    builder.addCase(getOneUser.pending, (state) => {
+      state.loading = "pending";
+    });
+    builder.addCase(getOneUser.fulfilled, (state, action) => {
       state.user = action.payload;
       state.loading = "succeeded";
     });
-    builders.addCase(subscribeUser.fulfilled, (state, action) => {
+    builder.addCase(getOneUser.rejected, (state) => {
+      state.loading = "failed";
+    });
+    builder.addCase(subscribeUser.pending, (state) => {
+      state.loading = "pending";
+    });
+    builder.addCase(subscribeUser.fulfilled, (state, action) => {
       state.user = [...state.user, action.payload];
       state.loading = "succeeded";
+    });
+    builder.addCase(subscribeUser.rejected, (state) => {
+      state.loading = "failed";
     });
   },
 });

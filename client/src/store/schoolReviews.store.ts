@@ -23,10 +23,16 @@ export const schoolReviewsSlice = createSlice({
   name: "schoolReviews",
   initialState,
   reducers: {},
-  extraReducers: (builders) => {
-    builders.addCase(getOneSchoolReviews.fulfilled, (state, action) => {
+  extraReducers: (builder) => {
+    builder.addCase(getOneSchoolReviews.pending, (state) => {
+      state.loading = "pending";
+    });
+    builder.addCase(getOneSchoolReviews.fulfilled, (state, action) => {
       state.schoolReviews = action.payload;
       state.loading = "succeeded";
+    });
+    builder.addCase(getOneSchoolReviews.rejected, (state) => {
+      state.loading = "failed";
     });
   },
 });

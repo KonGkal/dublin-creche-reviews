@@ -34,13 +34,25 @@ export const schoolsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(getAllSchools.pending, (state) => {
+      state.loading = "pending";
+    });
     builder.addCase(getAllSchools.fulfilled, (state, action) => {
       state.schools = action.payload;
       state.loading = "succeeded";
     });
+    builder.addCase(getAllSchools.rejected, (state) => {
+      state.loading = "failed";
+    });
+    builder.addCase(addNewSchool.pending, (state) => {
+      state.loading = "pending";
+    });
     builder.addCase(addNewSchool.fulfilled, (state, action) => {
       state.schools = [...state.schools, action.payload];
       state.loading = "succeeded";
+    });
+    builder.addCase(addNewSchool.rejected, (state) => {
+      state.loading = "failed";
     });
   },
 });

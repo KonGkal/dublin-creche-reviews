@@ -1,21 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState, useLayoutEffect } from "react";
 import ListedReview from "../listedReview/ListedReview";
 import { getSchool } from "../../services/apiService";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneSchoolReviews } from "../../store/schoolReviews.store";
 import { schoolReviewsSelector } from "../../store/store";
 import { SchoolInterface, SchoolParams } from "../../interfaces/types";
-import useDidMountEffect from "./useDidMountEffect";
 
 const ReviewsList = () => {
   const [schoolDetails, setSchoolDetails] = useState<SchoolInterface>();
   const { schoolReviews } = useSelector(schoolReviewsSelector);
 
   const { schoolId } = useParams<SchoolParams>();
-  const location = useLocation();
+
   const dispatch = useDispatch();
+
+  dispatch(getOneSchoolReviews(schoolId));
+
+  useEffect(() => {
+    dispatch(getOneSchoolReviews(schoolId));
+    getSchool(schoolId).then((school) => {
+      setSchoolDetails(school);
+    });
+  }, [schoolId, dispatch]);
 
   const mapContainerStyle = {
     width: "15em",
@@ -30,13 +38,6 @@ const ReviewsList = () => {
     disableDefaultUI: true,
     zoomControl: true,
   };
-
-  useDidMountEffect(() => {
-    dispatch(getOneSchoolReviews(schoolId));
-    getSchool(schoolId).then((school) => {
-      setSchoolDetails(school);
-    });
-  }, [schoolId, dispatch, location]);
 
   const listOfReviews = schoolReviews.map((review, index) => {
     return <ListedReview key={index} review={review} />;
