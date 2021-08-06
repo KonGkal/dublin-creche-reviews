@@ -12,8 +12,8 @@ export const getOneUser = createAsyncThunk(
 
 export const subscribeUser = createAsyncThunk(
   "user,subscribeUser",
-  async (token: string) => {
-    const data = await addNewUser(token);
+  async (user: string) => {
+    const data = await addNewUser(user);
     if (!data) return {};
     return data[0];
   }

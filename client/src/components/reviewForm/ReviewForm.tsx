@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import "./ReviewForm.css";
 import SchoolFormContainer from "../schoolForm/SchoolFormContainer";
 import { createReview } from "../../services/apiService";
@@ -15,7 +15,7 @@ const ReviewForm = () => {
   const [services, setServices] = useState("");
   const [comment, setComment] = useState("");
 
-  const submitHandler = async (event) => {
+  const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
 
     await createReview(

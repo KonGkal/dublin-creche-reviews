@@ -1,3 +1,4 @@
+import { GoogleMapProps } from "@react-google-maps/api";
 import { useState } from "react";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -7,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { addNewSchool } from "../../store/schools.store";
 const searchOptions = {
   types: ["establishment"],
-  location: { lat: () => 53.3498053, lng: () => -6.2603097 },
+  location: new google.maps.LatLng(53.3498053, -6.2603097),
   radius: 20000,
 };
 
@@ -56,14 +57,14 @@ const AddSchool = () => {
 
                 <div>
                   {loading ? <div>Loading...</div> : null}
-                  {suggestions.map((suggestion) => {
+                  {suggestions.map((suggestion, index) => {
                     const style = {
                       backgroundColor: suggestion.active ? "#00c9ff" : "#fff",
                     };
 
                     return (
                       <div
-                        key={suggestion.place_id}
+                        key={index}
                         {...getSuggestionItemProps(suggestion, { style })}
                       >
                         {suggestion.description}

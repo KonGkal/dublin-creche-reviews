@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ListedReview from "../listedReview/ListedReview";
 import { getSchool } from "../../services/apiService";
 import { useParams, useLocation } from "react-router-dom";
@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getOneSchoolReviews } from "../../store/schoolReviews.store";
 import { schoolReviewsSelector } from "../../store/store";
 import { SchoolInterface, SchoolParams } from "../../interfaces/types";
+import useDidMountEffect from "./useDidMountEffect";
 
 const ReviewsList = () => {
   const [schoolDetails, setSchoolDetails] = useState<SchoolInterface>();
@@ -30,7 +31,7 @@ const ReviewsList = () => {
     zoomControl: true,
   };
 
-  useEffect(() => {
+  useDidMountEffect(() => {
     dispatch(getOneSchoolReviews(schoolId));
     getSchool(schoolId).then((school) => {
       setSchoolDetails(school);

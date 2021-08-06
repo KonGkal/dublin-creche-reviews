@@ -1,6 +1,7 @@
 import "./ListedSchool.css";
+import { SchoolInterface } from "../../interfaces/types";
 
-const ListedSchool = ({ school }) => {
+const ListedSchool = ({ school }: { school: SchoolInterface }) => {
   const { name } = school;
 
   return (

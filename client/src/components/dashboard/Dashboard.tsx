@@ -10,15 +10,15 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <IconSvg className="icon" />
       <Switch>
-        <Route exact path="/" component={SchoolList} />
-        <Route exact path="/review" component={ReviewsContainer} />
-        <Route exact path="/myReviews" component={ReviewsContainer} />
         <Route
           exact
           path="/schoolReviews/:schoolId"
           component={ReviewsList}
           key={document.location.href}
         />
+        <Route exact path="/" component={SchoolList} />
+        <Route exact path="/review" component={ReviewsContainer} />
+        <Route exact path="/myReviews" component={ReviewsContainer} />
       </Switch>
     </div>
   );

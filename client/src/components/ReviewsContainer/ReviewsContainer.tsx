@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Route } from "react-router-dom";
 import ReviewForm from "../reviewForm/ReviewForm";
 import MyReviews from "../myReviews/MyReviews";
@@ -13,6 +13,7 @@ const ReviewsContainer = () => {
   const { user, getAccessTokenSilently } = useAuth0();
   const { user: userDetail } = useSelector(userSelector);
   const dispatch = useDispatch();
+  console.log(user);
 
   const getAllUsers = async () => {
     try {
@@ -23,9 +24,10 @@ const ReviewsContainer = () => {
     }
   };
 
-  const isExistingUser = (userEmail) => {
+  const isExistingUser = (userEmail: string) => {
     try {
       if (
+        user &&
         userDetail &&
         userDetail.filter((user) => user.email === userEmail).length === 0
       ) {

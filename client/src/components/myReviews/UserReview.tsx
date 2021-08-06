@@ -1,19 +1,27 @@
 import { deleteReview } from "../../services/apiService";
 import { useSelector } from "react-redux";
 import { schoolsSelector } from "../../store/store";
+import { ReviewInterface } from "../../interfaces/types";
 
-const UserReview = ({ review, setUserReviews }) => {
+const UserReview = ({
+  review,
+  setUserReviews,
+}: {
+  review: ReviewInterface;
+  setUserReviews: Function;
+}) => {
   const { id, facility, staff, overall, services, comment, SchoolId } = review;
 
   const { schools } = useSelector(schoolsSelector);
 
-  const schoolName = schools
-    ? schools.filter((school) => school.id === SchoolId)
-    : null;
+  const schoolName =
+    schools && schools.filter((school) => school.id === SchoolId);
 
   const deleteReviewHandler = async () => {
     await deleteReview(id);
-    setUserReviews((prev) => prev.filter((review) => review.id !== id));
+    setUserReviews((prev: ReviewInterface[]) =>
+      prev.filter((review) => review.id !== id)
+    );
   };
   return (
     <li className="listed-reviews shadow-and-border">
