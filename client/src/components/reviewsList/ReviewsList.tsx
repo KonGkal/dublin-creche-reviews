@@ -16,8 +16,6 @@ const ReviewsList = () => {
 
   const dispatch = useDispatch();
 
-  dispatch(getOneSchoolReviews(schoolId));
-
   useEffect(() => {
     dispatch(getOneSchoolReviews(schoolId));
     getSchool(schoolId).then((school) => {
