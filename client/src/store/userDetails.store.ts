@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getUser, addNewUser } from "../services/apiService";
+import { getUsers, addNewUser } from "../services/apiService";
 import { UserDetailsInterface } from "../interfaces/types";
 
-export const getOneUser = createAsyncThunk(
+export const getAllUsers = createAsyncThunk(
   "user,getOneUser",
   async (token: string) => {
-    const data = await getUser(token);
+    const data = await getUsers(token);
     return data;
   }
 );
@@ -39,14 +39,14 @@ export const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getOneUser.pending, (state) => {
+    builder.addCase(getAllUsers.pending, (state) => {
       state.loading = "pending";
     });
-    builder.addCase(getOneUser.fulfilled, (state, action) => {
+    builder.addCase(getAllUsers.fulfilled, (state, action) => {
       state.user = action.payload;
       state.loading = "succeeded";
     });
-    builder.addCase(getOneUser.rejected, (state) => {
+    builder.addCase(getAllUsers.rejected, (state) => {
       state.loading = "failed";
     });
     builder.addCase(subscribeUser.pending, (state) => {

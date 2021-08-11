@@ -5,7 +5,7 @@ import MyReviews from "../myReviews/MyReviews";
 import { useAuth0 } from "@auth0/auth0-react";
 import { findUserByEmail } from "../../services/apiService";
 import { useSelector, useDispatch } from "react-redux";
-import { getOneUser, subscribeUser } from "../../store/userDetails.store";
+import { getAllUsers, subscribeUser } from "../../store/userDetails.store";
 import { setUser } from "../../store/userDetails.store";
 import { userSelector } from "../../store/store";
 
@@ -14,38 +14,41 @@ const ReviewsContainer = () => {
   const { user: userDetail } = useSelector(userSelector);
   const dispatch = useDispatch();
 
-  const getAllUsers = async () => {
-    try {
-      const token = await getAccessTokenSilently();
-      return dispatch(getOneUser(token));
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  useEffect(saveInitialUserToStore, [dispatch, getAccessTokenSilently, user]);
+  useEffect(saveNewUserToDatabase, [dispatch, user, userDetail]);
+  useEffect(overrideUsersWithCurrentOne, [user, dispatch, userDetail]);
 
-  const isExistingUser = (userEmail: string) => {
-    try {
-      if (
-        user &&
-        userDetail &&
-        userDetail.filter((user) => user.email === userEmail).length === 0
-      ) {
-        dispatch(subscribeUser(user.email));
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  useEffect(() => {
-    if (!user) getAllUsers();
-    if (user) isExistingUser(user.email);
+  function saveInitialUserToStore() {
     if (user) {
+      getAccessTokenSilently().then((token) => {
+        dispatch(getAllUsers(token));
+      });
+    }
+  }
+
+  function saveNewUserToDatabase() {
+    if (!user) return;
+    const userEmail = user.email;
+    const isNewUser =
+      user &&
+      userDetail &&
+      !userDetail.find((user2) => user2?.email === userEmail);
+
+    if (isNewUser) {
+      console.log("saving new user to DB");
+      dispatch(subscribeUser(user.email));
+    }
+  }
+
+  function overrideUsersWithCurrentOne() {
+    const isCurrentUserSaved = userDetail[0]?.email === user.email;
+
+    if (!isCurrentUserSaved) {
       findUserByEmail(user.email).then((user) => {
         dispatch(setUser(user));
       });
     }
-  }, [user, dispatch]);
+  }
 
   return (
     <>

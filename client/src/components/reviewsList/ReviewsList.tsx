@@ -18,9 +18,11 @@ const ReviewsList = () => {
 
   useEffect(() => {
     dispatch(getOneSchoolReviews(schoolId));
-    getSchool(schoolId).then((school) => {
+
+    (async () => {
+      const school = await getSchool(schoolId);
       setSchoolDetails(school);
-    });
+    })();
   }, [schoolId, dispatch]);
 
   const mapContainerStyle = {
@@ -29,8 +31,8 @@ const ReviewsList = () => {
   };
 
   const center = {
-    lat: schoolDetails.lat || 53.3498053,
-    lng: schoolDetails.lng || -6.2603097,
+    lat: schoolDetails?.lat || 53.3498053,
+    lng: schoolDetails?.lng || -6.2603097,
   };
   const options = {
     disableDefaultUI: true,
@@ -51,7 +53,9 @@ const ReviewsList = () => {
     <>
       <h1 className="header">Reviews</h1>
       <div className="school-list shadow-and-border">
-        <h1 className="listed-reviews-header">{schoolDetails.name}</h1>
+        <h1 className="listed-reviews-header">
+          {schoolDetails?.name || "Dublin"}
+        </h1>
         <div className="map shadow-and-border">
           <GoogleMap
             mapContainerStyle={mapContainerStyle}

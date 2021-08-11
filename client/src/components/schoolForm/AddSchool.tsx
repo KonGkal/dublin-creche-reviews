@@ -6,9 +6,9 @@ import PlacesAutocomplete, {
 import { useDispatch } from "react-redux";
 import { addNewSchool } from "../../store/schools.store";
 
-const searchOptions = {
+const searchOptions: any = {
   types: ["establishment"],
-  location: new google.maps.LatLng(53.3498053, -6.2603097),
+  location: { lat: () => 53.3498053, lng: () => -6.2603097 },
   radius: 20000,
 };
 

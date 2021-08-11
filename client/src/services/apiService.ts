@@ -98,7 +98,7 @@ export const deleteReview = async (id: number) => {
   }
 };
 
-export const getUser = async (token: any) => {
+export const getUsers = async (token: any) => {
   try {
     const res = await axios.get(`${baseUrl}/users`, {
       headers: {
