@@ -1,7 +1,7 @@
-import React from "react";
 import "./ListedReview.css";
+import { ReviewInterface } from "../../interfaces/types";
 
-const ListedReview = ({ review }) => {
+const ListedReview = ({ review }: { review: ReviewInterface }) => {
   const { facility, staff, services, overall, comment } = review;
   return (
     <li className="listed-reviews shadow-and-border">

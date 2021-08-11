@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import "./ReviewForm.css";
 import SchoolFormContainer from "../schoolForm/SchoolFormContainer";
 import { createReview } from "../../services/apiService";
-
 import { useSelector } from "react-redux";
+import { userSelector } from "../../store/store";
 
 const ReviewForm = () => {
   const [selectedSchool, setSelectedSchool] = useState("");
-  const { user } = useSelector((state) => state.user);
+  const { user } = useSelector(userSelector);
   const [userDetails] = user;
 
   const [facility, setFacility] = useState("");
@@ -15,7 +15,7 @@ const ReviewForm = () => {
   const [services, setServices] = useState("");
   const [comment, setComment] = useState("");
 
-  const submitHandler = async (event) => {
+  const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
 
     await createReview(

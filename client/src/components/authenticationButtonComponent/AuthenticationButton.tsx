@@ -1,5 +1,3 @@
-import React from "react";
-
 import LoginButton from "./LoginButton";
 import LogOutButton from "./LogOutButton";
 import SignUpButton from "./SignUpButton";

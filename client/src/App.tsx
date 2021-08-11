@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Navbar from "./components/navbar/Navbar";
 import Dashboard from "./components/dashboard/Dashboard";
 import Loading from "./components/loading/Loading";
@@ -10,7 +10,8 @@ import "./App.css";
 
 import { useAuth0 } from "@auth0/auth0-react";
 
-const libraries = ["places"];
+const libraries = ["places"] as any[];
+
 function App() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
@@ -38,8 +39,8 @@ function App() {
     return <Loading />;
   }
 
-  if (loadError) return "Error loading Maps";
-  if (!isLoaded) return "Loading Maps";
+  if (loadError) return <h1>Error loading Maps</h1>;
+  if (!isLoaded) return <h1>Loading Maps</h1>;
   return (
     <>
       <div>

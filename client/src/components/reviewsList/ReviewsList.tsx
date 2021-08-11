@@ -1,16 +1,29 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ListedReview from "../listedReview/ListedReview";
 import { getSchool } from "../../services/apiService";
 import { useParams } from "react-router-dom";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneSchoolReviews } from "../../store/schoolReviews.store";
+import { schoolReviewsSelector } from "../../store/store";
+import { SchoolInterface, SchoolParams } from "../../interfaces/types";
 
 const ReviewsList = () => {
-  const [schoolDetails, setSchoolDetails] = useState([]);
-  const { schoolReviews } = useSelector((state) => state.schoolReviews);
-  const { schoolId } = useParams();
+  const [schoolDetails, setSchoolDetails] = useState<SchoolInterface>();
+  const { schoolReviews } = useSelector(schoolReviewsSelector);
+
+  const { schoolId } = useParams<SchoolParams>();
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getOneSchoolReviews(schoolId));
+
+    (async () => {
+      const school = await getSchool(schoolId);
+      setSchoolDetails(school);
+    })();
+  }, [schoolId, dispatch]);
 
   const mapContainerStyle = {
     width: "15em",
@@ -18,21 +31,13 @@ const ReviewsList = () => {
   };
 
   const center = {
-    lat: schoolDetails.lat || 53.3498053,
-    lng: schoolDetails.lng || -6.2603097,
+    lat: schoolDetails?.lat || 53.3498053,
+    lng: schoolDetails?.lng || -6.2603097,
   };
   const options = {
     disableDefaultUI: true,
     zoomControl: true,
   };
-
-  useEffect(() => {
-    dispatch(getOneSchoolReviews(schoolId));
-
-    getSchool(schoolId).then((school) => {
-      setSchoolDetails(school);
-    });
-  }, [schoolId, dispatch]);
 
   const listOfReviews = schoolReviews.map((review, index) => {
     return <ListedReview key={index} review={review} />;
@@ -48,7 +53,9 @@ const ReviewsList = () => {
     <>
       <h1 className="header">Reviews</h1>
       <div className="school-list shadow-and-border">
-        <h1 className="listed-reviews-header">{schoolDetails.name}</h1>
+        <h1 className="listed-reviews-header">
+          {schoolDetails?.name || "Dublin"}
+        </h1>
         <div className="map shadow-and-border">
           <GoogleMap
             mapContainerStyle={mapContainerStyle}

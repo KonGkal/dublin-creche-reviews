@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { getUserReviews } from "../../services/apiService";
 import { useSelector } from "react-redux";
+import { userSelector } from "../../store/store";
 import UserReview from "./UserReview";
+import { ReviewInterface } from "../../interfaces/types";
 
 const MyReviews = () => {
-  const [userReviews, setUserReviews] = useState([]);
-  const { user } = useSelector((state) => state.user);
+  const [userReviews, setUserReviews] = useState<ReviewInterface[]>([]);
+  const { user } = useSelector(userSelector);
   const [userDetails] = user;
 
   useEffect(() => {
