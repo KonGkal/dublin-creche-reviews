@@ -46,6 +46,7 @@ const UserReview = ({
       </div>
       <div className="button-container">
         <button
+          aria-label="delete-button"
           className="delete-button"
           onClick={() => {
             if (window.confirm("Are you sure you wish to delete this item?"))

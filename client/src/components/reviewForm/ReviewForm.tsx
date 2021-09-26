@@ -15,7 +15,7 @@ const ReviewForm = () => {
   const [services, setServices] = useState("");
   const [comment, setComment] = useState("");
 
-  const submitHandler = async (event: FormEvent) => {
+  const submitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     await createReview(

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { getUserReviews } from "../../services/apiService";
 import { useSelector } from "react-redux";
 import { userSelector } from "../../store/store";
@@ -10,13 +10,18 @@ const MyReviews = () => {
   const { user } = useSelector(userSelector);
   const [userDetails] = user;
 
-  useEffect(() => {
+  const getReviews = useCallback(async () => {
     if (userDetails) {
-      getUserReviews(userDetails.id).then((reviews) => {
-        setUserReviews(reviews);
-      });
+      const userReviews: ReviewInterface[] = await getUserReviews(
+        userDetails.id
+      );
+      setUserReviews(userReviews);
     }
   }, [userDetails]);
+
+  useEffect(() => {
+    getReviews();
+  }, [userDetails, getReviews]);
 
   const listOfUserReviews = userReviews
     ? userReviews.map((review) => {
@@ -34,10 +39,11 @@ const MyReviews = () => {
     <>
       <h1 className="header">My Reviews</h1>
       <div className="school-list shadow-and-border">
-        {userReviews.length ? null : <p>There are no current reviews.</p>}
-        <div>
+        {userReviews.length ? (
           <ul>{listOfUserReviews}</ul>
-        </div>
+        ) : (
+          <p>There are no current reviews.</p>
+        )}
       </div>
     </>
   );

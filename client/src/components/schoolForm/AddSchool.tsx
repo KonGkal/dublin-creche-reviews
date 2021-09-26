@@ -2,23 +2,19 @@ import { FormEvent, useState } from "react";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
+  PropTypes,
 } from "react-places-autocomplete";
 import { useDispatch } from "react-redux";
 import { addNewSchool } from "../../store/schools.store";
-
-const searchOptions: any = {
-  types: ["establishment"],
-  location: { lat: () => 53.3498053, lng: () => -6.2603097 },
-  radius: 20000,
-};
+import { AppDispatch } from "../../store/store";
 
 const AddSchool = () => {
   const [name, setName] = useState("");
-  const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
+  const [coordinates, setCoordinates] = useState<google.maps.LatLngLiteral>();
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const addSchoolSubmitHandler = async (event: FormEvent) => {
+  const addSchoolSubmitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(
       addNewSchool({ name: name, lat: coordinates.lat, lng: coordinates.lng })
@@ -27,11 +23,20 @@ const AddSchool = () => {
     setName("");
   };
 
-  const handleSelect = async (value: any) => {
+  const handleSelect = async (value: string) => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
     setCoordinates(latLng);
     setName(value);
+  };
+
+  const searchOptions: PropTypes["searchOptions"] = {
+    types: ["establishment"],
+    radius: 20000,
+    location: new google.maps.LatLng({
+      lat: 53.3498053,
+      lng: -6.2603097,
+    }),
   };
 
   return (

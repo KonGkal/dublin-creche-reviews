@@ -7,18 +7,18 @@ import { findUserByEmail } from "../../services/apiService";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllUsers, subscribeUser } from "../../store/userDetails.store";
 import { setUser } from "../../store/userDetails.store";
-import { userSelector } from "../../store/store";
+import { AppDispatch, userSelector } from "../../store/store";
 
 const ReviewsContainer = () => {
   const { user, getAccessTokenSilently } = useAuth0();
   const { user: userDetail } = useSelector(userSelector);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
-  useEffect(saveInitialUserToStore, [dispatch, getAccessTokenSilently, user]);
+  useEffect(saveInitialUsersToStore, [dispatch, getAccessTokenSilently, user]);
   useEffect(saveNewUserToDatabase, [dispatch, user, userDetail]);
   useEffect(overrideUsersWithCurrentOne, [user, dispatch, userDetail]);
 
-  function saveInitialUserToStore() {
+  function saveInitialUsersToStore() {
     if (user) {
       getAccessTokenSilently().then((token) => {
         dispatch(getAllUsers(token));
