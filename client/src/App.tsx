@@ -5,12 +5,12 @@ import Loading from "./components/loading/Loading";
 import { useLoadScript } from "@react-google-maps/api";
 import { useDispatch } from "react-redux";
 import { getAllSchools } from "./store/schools.store";
-
+import { Libraries } from "@react-google-maps/api/dist/utils/make-load-script-url";
 import "./App.css";
-
 import { useAuth0 } from "@auth0/auth0-react";
+import { AppDispatch } from "./store/store";
 
-const libraries = ["places"] as any[];
+const libraries: Libraries = ["places"];
 
 function App() {
   const { isLoaded, loadError } = useLoadScript({
@@ -20,7 +20,7 @@ function App() {
 
   const errorCheck = useRef(false);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(getAllSchools());

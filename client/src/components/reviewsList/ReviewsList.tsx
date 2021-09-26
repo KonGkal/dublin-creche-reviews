@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import { useSelector, useDispatch } from "react-redux";
 import { getOneSchoolReviews } from "../../store/schoolReviews.store";
-import { schoolReviewsSelector } from "../../store/store";
+import { AppDispatch, schoolReviewsSelector } from "../../store/store";
 import { SchoolInterface, SchoolParams } from "../../interfaces/types";
 
 const ReviewsList = () => {
@@ -14,7 +14,7 @@ const ReviewsList = () => {
 
   const { schoolId } = useParams<SchoolParams>();
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(getOneSchoolReviews(schoolId));

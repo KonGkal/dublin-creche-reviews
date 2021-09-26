@@ -1,4 +1,3 @@
-import React from "react";
 import MainNav from "./MainNav";
 import AuthenticationNav from "./AuthenticationNav";
 import "./Navbar.css";

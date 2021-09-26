@@ -1,4 +1,3 @@
-import React from "react";
 import AuthenticationButton from "../authenticationButtonComponent/AuthenticationButton";
 import "./Navbar.css";
 
