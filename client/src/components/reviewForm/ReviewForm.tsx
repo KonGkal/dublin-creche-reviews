@@ -4,6 +4,7 @@ import SchoolFormContainer from "../schoolForm/SchoolFormContainer";
 import { createReview } from "../../services/apiService";
 import { useSelector } from "react-redux";
 import { userSelector } from "../../store/store";
+import DynamicSelect from "../DynamicSelect/DynamicSelect";
 
 const ReviewForm = () => {
   const [selectedSchool, setSelectedSchool] = useState("");
@@ -47,18 +48,12 @@ const ReviewForm = () => {
             <div className="school-form-container">
               <h5>Facility</h5>
 
-              <select
-                value={facility}
-                name="facility"
-                onChange={(e) => setFacility(e.target.value)}
-              >
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
+              <DynamicSelect
+                selectValue={facility}
+                selectName="facility"
+                set={setFacility}
+                range={6}
+              />
 
               <h5>Staff</h5>
 
