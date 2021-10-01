@@ -6,7 +6,6 @@ type DynamicSelectProps = {
   startAt?: number;
   selectValue: string;
   selectName: string;
-  header?: string;
   set: Dispatch<SetStateAction<string>>;
 };
 
@@ -16,7 +15,6 @@ const DynamicSelect = ({
   selectValue,
   selectName,
   set,
-  header,
 }: DynamicSelectProps) => {
   function createArrayInRange(
     size: number,
