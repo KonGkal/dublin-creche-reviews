@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Navbar from "./components/navbar/Navbar";
 import Dashboard from "./components/dashboard/Dashboard";
 import Loading from "./components/loading/Loading";
@@ -18,8 +18,6 @@ function App() {
     libraries,
   });
 
-  const errorCheck = useRef(false);
-
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -28,13 +26,6 @@ function App() {
 
   const { isLoading } = useAuth0();
 
-  if (errorCheck.current) {
-    return (
-      <div className="container">
-        <p>Server Error</p>
-      </div>
-    );
-  }
   if (isLoading) {
     return <Loading />;
   }
