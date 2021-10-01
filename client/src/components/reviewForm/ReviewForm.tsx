@@ -57,33 +57,21 @@ const ReviewForm = () => {
 
               <h5>Staff</h5>
 
-              <select
-                value={staff}
-                name="staff"
-                onChange={(e) => setStaff(e.target.value)}
-              >
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
+              <DynamicSelect
+                selectValue={staff}
+                selectName="staff"
+                set={setStaff}
+                range={6}
+              />
 
               <h5>Services</h5>
 
-              <select
-                value={services}
-                name="services"
-                onChange={(e) => setServices(e.target.value)}
-              >
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
+              <DynamicSelect
+                selectValue={services}
+                selectName="services"
+                set={setServices}
+                range={6}
+              />
             </div>
             <h5>Comment</h5>
 
